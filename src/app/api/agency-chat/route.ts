@@ -51,8 +51,8 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    if (!process.env.GROQ_API_KEY) {
-      console.error("GROQ_API_KEY is not set");
+    if (!process.env.GEMINI_API_KEY) {
+      console.error("GEMINI_API_KEY is not set");
       return NextResponse.json(
         {
           reply:
@@ -65,34 +65,45 @@ export async function POST(req: NextRequest) {
     // Keep the payload small — last 12 turns is plenty of context for this use case.
     const trimmed = messages.slice(-12);
 
-    const groqMessages = [
-      { role: "system", content: SYSTEM_PROMPT },
-      ...trimmed.map((m) => ({
-        role: m.role === "bot" ? "assistant" : "user",
-        content: String(m.text ?? "").slice(0, 2000),
-      })),
-    ];
+    // Gemini requires the conversation to start with a user turn, so drop any
+    // leading bot messages (the widget's greeting) before the first user turn.
+    const firstUserIdx = trimmed.findIndex((m) => m.role === "user");
+    const history = firstUserIdx >= 0 ? trimmed.slice(firstUserIdx) : [];
 
-    const groqRes = await fetch(
-      "https://api.groq.com/openai/v1/chat/completions",
+    if (history.length === 0) {
+      return NextResponse.json(
+        {
+          reply:
+            "What would you like to know — the system, the price, or how it works?",
+        },
+        { status: 200 },
+      );
+    }
+
+    const contents = history.map((m) => ({
+      role: m.role === "bot" ? "model" : "user",
+      parts: [{ text: String(m.text ?? "").slice(0, 2000) }],
+    }));
+
+    const geminiRes = await fetch(
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
+          "x-goog-api-key": process.env.GEMINI_API_KEY,
         },
         body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: groqMessages,
-          temperature: 0.4,
-          max_tokens: 300,
+          system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+          contents,
+          generationConfig: { temperature: 0.4, maxOutputTokens: 800 },
         }),
       },
     );
 
-    if (!groqRes.ok) {
-      const errText = await groqRes.text();
-      console.error("Groq API error:", groqRes.status, errText);
+    if (!geminiRes.ok) {
+      const errText = await geminiRes.text();
+      console.error("Gemini API error:", geminiRes.status, errText);
       return NextResponse.json(
         {
           reply:
@@ -102,9 +113,14 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const data = await groqRes.json();
+    const data = await geminiRes.json();
+    const parts: Array<{ text?: string }> =
+      data?.candidates?.[0]?.content?.parts ?? [];
     const reply: string =
-      data?.choices?.[0]?.message?.content?.trim() ||
+      parts
+        .map((p) => p.text ?? "")
+        .join("")
+        .trim() ||
       "Sorry, could you rephrase that? I want to make sure I give you the right answer.";
 
     return NextResponse.json({ reply });
