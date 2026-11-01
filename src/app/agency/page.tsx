@@ -5,6 +5,228 @@ import Script from "next/script";
 
 type ChatMsg = { role: "user" | "bot"; text: string };
 
+const SYSTEMS = {
+  featured: {
+    name: "AI Voice Receptionist",
+    tagline: "Every call answered. Every caller captured or booked.",
+    setup: "$497",
+    monthly: "$397",
+    terms: "One-time setup, then $397/month. Cancel with 30 days' notice.",
+    items: [
+      "A natural-voice AI answers your phone 24/7: nights, weekends, holidays",
+      "Books appointments straight into your calendar",
+      "Captures name, number, and need on every single call",
+      "Answers questions from facts you approve: services, prices, hours",
+      "Instant summary to you after every call",
+      "Covers after-hours, overflow, or every call you get",
+    ],
+  },
+  others: [
+    {
+      name: "Ads Management",
+      tagline: "Google + Meta campaigns, built and managed for you.",
+      setup: "$500",
+      monthly: "$1,250",
+      terms:
+        "One-time setup, then $1,250/month. Ad spend stays on your card (we recommend $1,500+/month). 90-day minimum.",
+      items: [
+        "Strategy, build, and launch on Google + Meta",
+        "Ad copy and audience targeting done for you",
+        "Weekly optimization: budget follows what works",
+        "Monthly report: spend, leads, cost per lead",
+        "Your ad accounts stay 100% yours, always",
+      ],
+      note: "Straight talk: ads bring traffic and inquiries. Results vary, and no honest agency guarantees sales.",
+    },
+    {
+      name: "Website + AI Booking",
+      tagline: "A website that books jobs while you sleep.",
+      setup: "$997",
+      monthly: "$497",
+      terms:
+        "One-time setup, then $497/month. 6-month minimum, then month-to-month.",
+      items: [
+        "A fast new website, built for your business",
+        "AI chat on every page, 24/7: captures name, phone, and problem",
+        "Instant lead alert to you, instant reply to the customer",
+        "Follow-up emails to leads who didn't book: 4 emails over 7 days",
+        "Online booking and automatic review requests",
+        "A 1-page monthly report: chats, leads, bookings",
+      ],
+    },
+    {
+      name: "Reactivation Campaign",
+      tagline: "Wake up the customers you already earned.",
+      setup: "$750",
+      monthly: null as string | null,
+      terms:
+        "One-time, from $750. Final price depends on list size and is quoted on the call.",
+      items: [
+        "2–3 emails written for your business, sent to your past customers",
+        "You approve every word before anything sends",
+        "Your list stays 100% yours: never shared, never reused",
+        "Replies and bookings tracked for you",
+        "A results report when the campaign ends",
+      ],
+    },
+  ],
+};
+
+const LEAKS = [
+  {
+    title: "The phone rings out",
+    body: "A customer calls at 8pm and gets voicemail. They don't leave a message. They call the next company.",
+  },
+  {
+    title: "Leads go cold",
+    body: "Someone fills out your form and hears back tomorrow, or never. Whoever answers first wins the job.",
+  },
+  {
+    title: "The list sleeps",
+    body: "Past customers are ready to buy again and nobody asks. It's the cheapest revenue you own.",
+  },
+];
+
+const COMPARE = [
+  [
+    "Missed calls",
+    "A receptionist: $3,000+/month, 9-to-5, sick days and turnover",
+    "AI receptionist answers 24/7 for $397/month",
+  ],
+  [
+    "Lead follow-up",
+    "Whoever notices first, hours or days later",
+    "Instant alert to you, instant reply to the customer",
+  ],
+  [
+    "New customers",
+    "Hope, referrals, and word of mouth",
+    "Managed Google + Meta ads with cost-per-lead reporting",
+  ],
+  [
+    "Past customers",
+    "A list sitting in a drawer, going cold",
+    "A campaign that wakes them up and books them again",
+  ],
+  ["Proof it works", "Gut feeling", "One monthly report in plain numbers"],
+  [
+    "Who runs it",
+    "You, on top of everything else",
+    "Excelsus: built, managed, reported",
+  ],
+];
+
+const STEPS = [
+  {
+    n: "01",
+    t: "Demo call",
+    d: "Day 0",
+    p: "15 minutes. We find the leak costing you the most customers. If we can't fix it, I'll tell you straight.",
+  },
+  {
+    n: "02",
+    t: "Say yes",
+    d: "Day 0",
+    p: "The setup fee for your system, paid online. No payment, no start. That keeps both of us serious.",
+  },
+  {
+    n: "03",
+    t: "Intake",
+    d: "Day 1",
+    p: "A 15-minute form: services, prices, hours. You approve one page of facts. That's all your AI is ever allowed to say.",
+  },
+  {
+    n: "04",
+    t: "Build & launch",
+    d: "Days 2–6",
+    p: "We build it, then test it live with you watching: a real call, a real lead, end to end. Ad campaigns launch within 14 days.",
+  },
+  {
+    n: "05",
+    t: "Report & grow",
+    d: "Day 30",
+    p: "Your first monthly report lands: exactly what your systems produced, in plain numbers. Add a second system whenever you're ready.",
+  },
+];
+
+const AUDIENCE = [
+  "Home services",
+  "Medical & dental",
+  "Legal & professional",
+  "Realtors",
+  "Auto",
+  "Salons & fitness",
+  "Any lead-driven business",
+];
+
+const PROOF = [
+  {
+    tag: "Live platform",
+    name: "Excelsus",
+    desc: "Full-stack brand and membership platform: auth, subscriptions, community, and an admin panel. Built and maintained by me.",
+    stack: ["Next.js", "Supabase", "Stripe", "Vercel"],
+  },
+  {
+    tag: "Live platform",
+    name: "HackLingo",
+    desc: "Gamified cybersecurity learning platform with an XP system for learning ethical hacking. Built from scratch.",
+    stack: ["Next.js", "Supabase", "TypeScript"],
+  },
+  {
+    tag: "Client work",
+    name: "Orlando Realtor, Roxanne Fernandez",
+    desc: "Real estate listing site with lead capture and property inquiry forms. Delivered in under a week.",
+    stack: ["Next.js", "Vercel", "SEO"],
+  },
+  {
+    tag: "Security",
+    name: "Hardened by default",
+    desc: "OWASP Top 10, CSP headers, input validation, auth hardening. Security is part of the foundation, not an add-on.",
+    stack: ["OWASP", "CSP", "Auth"],
+  },
+  {
+    tag: "Engineering",
+    name: "Achlys, a programming language",
+    desc: "A complete language built from scratch: lexer, parser, interpreter, standard library. The caliber of thinking behind every system.",
+    stack: ["Language design", "C / Rust"],
+  },
+  {
+    tag: "Systems",
+    name: "Custom OS / kernel",
+    desc: "A kernel and operating system written from scratch: memory management, scheduling, system calls.",
+    stack: ["Systems", "C / Assembly / LLVM"],
+  },
+];
+
+const FAQ = [
+  [
+    "Do I have to manage anything?",
+    "No. We build, run, monitor, and report. You approve one page of facts and, for reactivation, the emails. We handle the rest.",
+  ],
+  [
+    "What does the AI say to my customers?",
+    "Only what's on the one-page facts sheet you approve: your services, prices, and hours. It answers from those facts and captures the caller's details for you.",
+  ],
+  [
+    "Do I keep my ad accounts and customer list?",
+    "Yes. Ad accounts stay 100% yours, and your customer list is never shared or reused.",
+  ],
+  [
+    "How long am I locked in?",
+    "Voice receptionist: cancel with 30 days' notice. Ads: 90-day minimum. Website + AI booking: 6-month minimum, then month-to-month. Reactivation is a one-time project.",
+  ],
+  [
+    "Can I start with one system and add more later?",
+    "Yes. Start with the leak that costs you the most and add a second system any time.",
+  ],
+];
+
+const QUICK_PROMPTS = [
+  "What does it cost?",
+  "How does the voice receptionist work?",
+  "How fast can I be live?",
+];
+
 export default function AgencyPage() {
   const [chatOpen, setChatOpen] = useState(false);
   const [chatInput, setChatInput] = useState("");
@@ -12,7 +234,7 @@ export default function AgencyPage() {
   const [chatMessages, setChatMessages] = useState<ChatMsg[]>([
     {
       role: "bot",
-      text: "Hey — I'm the Excelsus AI assistant. Ask me about the voice receptionist, ads, the booking system, reactivation, or prices. What does your business do?",
+      text: "Hey, I'm the Excelsus AI assistant. Ask me about the voice receptionist, ads, the booking system, reactivation, or prices. What does your business do?",
     },
   ]);
   const chatMessagesRef = useRef<HTMLDivElement>(null);
@@ -23,8 +245,29 @@ export default function AgencyPage() {
     }
   }, [chatMessages, chatLoading]);
 
-  async function sendChat() {
-    const msg = chatInput.trim();
+  useEffect(() => {
+    const els = document.querySelectorAll(".reveal");
+    if (!("IntersectionObserver" in window)) {
+      els.forEach((e) => e.classList.add("in"));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            en.target.classList.add("in");
+            io.unobserve(en.target);
+          }
+        });
+      },
+      { threshold: 0.12 },
+    );
+    els.forEach((e) => io.observe(e));
+    return () => io.disconnect();
+  }, []);
+
+  async function sendChat(preset?: string) {
+    const msg = (preset ?? chatInput).trim();
     if (!msg || chatLoading) return;
     setChatInput("");
     const updated: ChatMsg[] = [...chatMessages, { role: "user", text: msg }];
@@ -55,807 +298,672 @@ export default function AgencyPage() {
   }
 
   return (
-    <div>
+    <div className="ex">
       <style>{`
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap');
 
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --accent:#0B7A55;--accent-strong:#095C43;--accent-light:#0E9F6E;--accent-soft:#E9F7F1;
-  --ink:#0B1220;--body:#3D4756;--muted:#68707E;--faint:#98A0AD;
-  --bg:#FFFFFF;--alt:#F6F7F8;--card:#FFFFFF;
-  --line:#E5E8EC;--line-strong:#D4D9DF;
-  --gold:#0B7A55;--gold-light:#0E9F6E;--gold-dim:#095C43;
-  --stone:#FFFFFF;--stone2:#F6F7F8;--stone3:#FFFFFF;
-  --iron:#68707E;--parchment:#3D4756;--parchment-dim:#3D4756;
-  --white:#0B1220;
-  --shadow-sm:0 1px 2px rgba(16,24,40,0.05);
-  --shadow-md:0 8px 24px -8px rgba(16,24,40,0.12);
-  --shadow-lg:0 24px 48px -16px rgba(16,24,40,0.18);
-  --radius:14px;
+.ex *{box-sizing:border-box;margin:0;padding:0}
+.ex{
+  --ink:#08110D;--body:#3A4640;--muted:#6B7770;--faint:#9AA59F;
+  --bg:#FBFCFB;--alt:#F3F6F4;--card:#FFFFFF;
+  --line:#E4EAE6;--line-strong:#CFD8D2;
+  --accent:#0A7F57;--accent-deep:#06503A;--accent-bright:#18C58A;--accent-soft:#E8F6EF;
+  --dark:#07120D;
+  --shadow-sm:0 1px 2px rgba(8,17,13,.05);
+  --shadow-md:0 12px 32px -12px rgba(8,17,13,.14);
+  --shadow-lg:0 32px 64px -24px rgba(8,17,13,.28);
+  --serif:'Instrument Serif',Georgia,'Times New Roman',serif;
+  background:var(--bg);color:var(--body);
+  font-family:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;line-height:1.6;
 }
-html{scroll-behavior:smooth;overflow-x:hidden}
-body{background:var(--bg);color:var(--body);font-family:'Inter',-apple-system,'Segoe UI',Roboto,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
-::selection{background:var(--accent);color:#fff}
-::-webkit-scrollbar{width:8px}
-::-webkit-scrollbar-track{background:var(--alt)}
-::-webkit-scrollbar-thumb{background:#CBD2DA;border-radius:8px}
+html{scroll-behavior:smooth}
+.ex ::selection{background:var(--accent);color:#fff}
+.ex a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 clamp(1.1rem,4vw,2.5rem)}
+.sec{padding:clamp(4rem,9vw,7.5rem) 0}
+.eyebrow{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.h2{font-size:clamp(2rem,4.4vw,3.2rem);font-weight:700;letter-spacing:-.035em;line-height:1.05;color:var(--ink);margin-top:.9rem}
+.h2 em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em;color:var(--accent)}
+.lede{font-size:1.08rem;color:var(--body);max-width:620px;margin-top:1.1rem;line-height:1.7}
 
-/* NAV */
-nav.topnav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:0 clamp(1rem,4vw,3rem)}
-.nav-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
-.nav-logo{font-weight:800;font-size:0.95rem;letter-spacing:0.14em;color:var(--ink);text-decoration:none}
-.nav-links{display:flex;gap:2.25rem;align-items:center}
-.nav-links a{font-size:0.82rem;font-weight:500;letter-spacing:0.01em;color:var(--muted);text-decoration:none;transition:color 0.2s}
+/* reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-size:.95rem;font-weight:600;letter-spacing:-.005em;padding:.95rem 1.6rem;border-radius:12px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s;white-space:nowrap;font-family:inherit}
+.btn-primary{background:var(--accent);color:#fff!important;box-shadow:0 12px 28px -12px rgba(10,127,87,.7)}
+.btn-primary:hover{background:var(--accent-deep);transform:translateY(-1px)}
+.btn-ghost{background:#fff;color:var(--ink)!important;border-color:var(--line-strong)}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-1px)}
+.btn-block{width:100%}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:60;background:rgba(251,252,251,.82);backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:.65rem;text-decoration:none;font-weight:800;font-size:.9rem;letter-spacing:.16em;color:var(--ink)!important}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--accent-bright),var(--accent-deep));display:grid;place-items:center;color:#fff;font-size:.8rem;letter-spacing:0}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-size:.85rem;font-weight:500;color:var(--muted);text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--ink)}
-.nav-cta{font-size:0.82rem!important;font-weight:600!important;letter-spacing:0.01em!important;background:var(--accent);color:#fff!important;padding:0.55rem 1.2rem;border-radius:9px;text-decoration:none;transition:background 0.2s,transform 0.2s}
-.nav-cta:hover{background:var(--accent-strong)!important}
+.nav-links .btn{padding:.6rem 1.15rem;font-size:.84rem;border-radius:10px;color:#fff}
+.nav-links .btn:hover{color:#fff}
 
-/* HERO */
-.hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:7rem 1.5rem 5rem;position:relative;overflow:hidden;background:radial-gradient(1100px 520px at 50% -8%,var(--accent-soft) 0%,rgba(233,247,241,0) 62%),var(--bg)}
-.hero-bg{position:absolute;inset:0;pointer-events:none}
-.hero-glow{display:none}
-.hero-line{display:none}
-.hero-eyebrow{font-size:0.72rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:1.4rem}
-.hero-divider{width:3.5rem;height:3px;border-radius:3px;margin:0 auto 1.75rem;background:var(--accent)}
-.hero h1{font-weight:800;line-height:1.04;letter-spacing:-0.03em;color:var(--ink);margin-bottom:1.4rem;font-size:clamp(2.6rem,6.5vw,4.6rem);max-width:900px}
-.hero-sub{font-size:clamp(1.05rem,2.2vw,1.28rem);font-weight:400;color:var(--body);max-width:640px;line-height:1.65;margin-bottom:1rem}
-.hero-tagline{font-size:0.78rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);margin-bottom:2.75rem}
-.hero-btns{display:flex;gap:0.85rem;flex-wrap:wrap;justify-content:center}
-.btn-primary{font-size:0.92rem;font-weight:600;letter-spacing:0.01em;background:var(--accent);color:#fff;padding:0.95rem 2.1rem;border-radius:11px;text-decoration:none;transition:background 0.2s,box-shadow 0.2s,transform 0.2s;white-space:nowrap;border:none;cursor:pointer;display:inline-block;box-shadow:0 10px 24px -10px rgba(11,122,85,0.55)}
-.btn-primary:hover{background:var(--accent-strong);transform:translateY(-1px)}
-.btn-ghost{font-size:0.92rem;font-weight:600;letter-spacing:0.01em;border:1px solid var(--line-strong);color:var(--ink);padding:0.95rem 2.1rem;border-radius:11px;text-decoration:none;transition:all 0.2s;white-space:nowrap;background:#fff;display:inline-block}
-.btn-ghost:hover{border-color:var(--ink);background:var(--alt)}
-@keyframes riseUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-.gold-shimmer{background:linear-gradient(92deg,#0B7A55 10%,#12B981 50%,#0B7A55 90%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 5s linear infinite}
-@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
-.animate-rise{animation:riseUp 0.7s cubic-bezier(0.22,0.61,0.36,1) forwards}
+/* hero */
+.hero{position:relative;overflow:hidden;padding:clamp(4rem,8vw,7rem) 0 clamp(3.5rem,6vw,5rem)}
+.hero::before{content:'';position:absolute;inset:0;background:
+  radial-gradient(900px 480px at 78% -10%,rgba(24,197,138,.18),transparent 60%),
+  radial-gradient(700px 400px at 5% 10%,rgba(10,127,87,.08),transparent 60%);pointer-events:none}
+.hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;opacity:.5;mask-image:radial-gradient(ellipse at 50% 0%,#000 0%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 50% 0%,#000 0%,transparent 70%);pointer-events:none}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.pill{display:inline-flex;align-items:center;gap:.55rem;font-size:.76rem;font-weight:600;color:var(--accent-deep);background:var(--accent-soft);border:1px solid rgba(10,127,87,.2);padding:.4rem .85rem;border-radius:999px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--accent-bright);box-shadow:0 0 0 0 rgba(24,197,138,.6);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(24,197,138,.55)}70%{box-shadow:0 0 0 10px rgba(24,197,138,0)}100%{box-shadow:0 0 0 0 rgba(24,197,138,0)}}
+.hero h1{font-size:clamp(2.7rem,6.2vw,4.9rem);font-weight:700;line-height:1;letter-spacing:-.045em;color:var(--ink);margin:1.4rem 0 1.4rem}
+.hero h1 em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.015em;color:var(--accent)}
+.hero-sub{font-size:clamp(1.05rem,1.8vw,1.2rem);color:var(--body);max-width:560px;line-height:1.7}
+.hero-cta{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2.1rem}
+.hero-trust{display:flex;gap:1.4rem;flex-wrap:wrap;margin-top:2rem;font-size:.82rem;font-weight:500;color:var(--muted)}
+.hero-trust span{display:inline-flex;align-items:center;gap:.45rem}
+.hero-trust i{font-style:normal;color:var(--accent);font-weight:700}
 
-/* PROOF / STATS STRIP */
-.proof-strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff;padding:2rem clamp(1rem,4vw,3rem)}
-.proof-grid{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;text-align:center}
-.proof-stat{font-size:2rem;font-weight:800;letter-spacing:-0.02em;color:var(--ink);line-height:1}
-.proof-label{font-size:0.7rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-top:0.5rem}
+/* call mock */
+.mock{position:relative;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow-lg);padding:1.3rem;max-width:440px;margin-left:auto;width:100%}
+.mock::before{content:'';position:absolute;inset:-1px;border-radius:24px;padding:1px;background:linear-gradient(160deg,rgba(24,197,138,.55),transparent 45%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.mock-head{display:flex;align-items:center;justify-content:space-between;padding-bottom:1rem;border-bottom:1px solid var(--line);margin-bottom:1rem}
+.mock-who{display:flex;align-items:center;gap:.7rem}
+.mock-ava{width:38px;height:38px;border-radius:50%;background:var(--accent-soft);display:grid;place-items:center;font-size:1rem}
+.mock-title{font-size:.88rem;font-weight:700;color:var(--ink);line-height:1.2}
+.mock-sub{font-size:.74rem;color:var(--muted)}
+.mock-live{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-deep);background:var(--accent-soft);padding:.28rem .6rem;border-radius:999px;display:inline-flex;align-items:center;gap:.4rem}
+.bubble{font-size:.88rem;line-height:1.5;padding:.7rem .9rem;border-radius:16px;max-width:86%;margin-bottom:.6rem}
+.bubble small{display:block;font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.2rem;opacity:.65}
+.b-caller{background:var(--alt);color:var(--body);border-bottom-left-radius:5px}
+.b-ai{background:var(--accent);color:#fff;margin-left:auto;border-bottom-right-radius:5px}
+.mock-result{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:1rem}
+.mock-chip{border:1px solid var(--line);border-radius:12px;padding:.7rem .8rem;background:#fff}
+.mock-chip b{display:block;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.15rem}
+.mock-chip span{font-size:.86rem;font-weight:600;color:var(--ink)}
+.mock-cap{text-align:center;font-size:.7rem;color:var(--faint);margin-top:.9rem}
+.mock-float{position:absolute;left:-1.5rem;bottom:2.5rem;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-md);padding:.7rem .95rem;font-size:.8rem;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:.55rem}
+.mock-float i{font-style:normal;color:var(--accent)}
 
-/* SECTION COMMON */
-section{padding:clamp(3.5rem,8vw,6.5rem) clamp(1rem,4vw,3rem)}
-.section-inner{max-width:1120px;margin:0 auto}
-.section-head{text-align:center;margin-bottom:3rem}
-.section-eyebrow{font-size:0.7rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.9rem}
-.section-title{font-size:clamp(1.7rem,3.6vw,2.6rem);font-weight:800;letter-spacing:-0.025em;color:var(--ink);line-height:1.12}
-.section-sub{font-size:1.02rem;font-weight:400;color:var(--body);max-width:620px;line-height:1.7;margin:0.9rem auto 0}
+/* stat strip */
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+.strip-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.strip-item{padding:1.6rem 1rem;text-align:center;border-right:1px solid var(--line)}
+.strip-item:last-child{border-right:none}
+.strip-n{font-size:1.9rem;font-weight:700;letter-spacing:-.03em;color:var(--ink);line-height:1}
+.strip-l{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.5rem}
 
-.service-copy{font-size:1rem;color:var(--body);line-height:1.75;margin-bottom:1rem;max-width:660px}
+/* leaks */
+.leaks{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem}
+.leak{padding:1.9rem;border:1px solid var(--line);background:#fff;border-radius:20px;box-shadow:var(--shadow-sm)}
+.leak-n{font-family:var(--serif);font-style:italic;font-size:2.2rem;color:var(--accent);line-height:1;margin-bottom:1.1rem}
+.leak h3{font-size:1.12rem;font-weight:700;letter-spacing:-.015em;color:var(--ink);margin-bottom:.5rem}
+.leak p{font-size:.95rem;color:var(--muted);line-height:1.65}
 
-/* Advantage callout */
-.advantage{margin-top:1.75rem;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 12px 12px 0;padding:1.1rem 1.35rem;max-width:720px}
-.advantage p:first-child{font-size:0.68rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-strong);margin-bottom:0.5rem}
-.advantage p:last-child{font-size:0.92rem;color:var(--body);line-height:1.7}
+/* systems */
+.sys-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
+.feat{display:grid;grid-template-columns:1.05fr .95fr;margin-top:3rem;background:var(--dark);color:#fff;border-radius:28px;overflow:hidden;box-shadow:var(--shadow-lg);position:relative}
+.feat::before{content:'';position:absolute;right:-10%;top:-40%;width:520px;height:520px;background:radial-gradient(circle,rgba(24,197,138,.28),transparent 65%);pointer-events:none}
+.feat-l{padding:clamp(1.8rem,4vw,3rem);position:relative;z-index:1}
+.feat-r{padding:clamp(1.8rem,4vw,3rem);background:rgba(255,255,255,.04);border-left:1px solid rgba(255,255,255,.08);position:relative;z-index:1;display:flex;flex-direction:column}
+.badge{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:var(--accent-bright);color:#032417;padding:.32rem .75rem;border-radius:999px}
+.feat h3{font-size:clamp(1.7rem,3.2vw,2.3rem);font-weight:700;letter-spacing:-.03em;margin:1.1rem 0 .6rem;line-height:1.1}
+.feat-tag{color:rgba(255,255,255,.72);font-size:1.02rem;max-width:440px}
+.price-row{display:flex;align-items:flex-end;gap:.4rem;margin-top:1.8rem}
+.price-big{font-size:3.4rem;font-weight:700;letter-spacing:-.04em;line-height:1}
+.price-unit{font-size:.9rem;color:rgba(255,255,255,.6);padding-bottom:.45rem}
+.price-plus{font-size:.95rem;color:rgba(255,255,255,.75);margin-top:.6rem}
+.feat-terms{font-size:.82rem;color:rgba(255,255,255,.5);margin-top:.5rem}
+.checks{list-style:none;display:flex;flex-direction:column;gap:.8rem}
+.checks li{display:flex;gap:.7rem;font-size:.95rem;line-height:1.5;align-items:flex-start}
+.checks li::before{content:'';flex-shrink:0;width:18px;height:18px;margin-top:.15rem;border-radius:50%;background:var(--accent-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.6 2.6L12 5.6' fill='none' stroke='%230A7F57' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
+.feat-r .checks li{color:rgba(255,255,255,.88)}
+.feat-r .checks li::before{background-color:rgba(24,197,138,.2)}
+.feat-cta{margin-top:auto;padding-top:2rem}
+.feat .btn-primary{background:var(--accent-bright);color:#032417!important;box-shadow:0 14px 30px -12px rgba(24,197,138,.7)}
+.feat .btn-primary:hover{background:#2EDDA0}
 
-/* TIER / PRICING CARDS */
-.tier-grid{display:grid;grid-template-columns:minmax(min(100%,560px),560px);justify-content:center;gap:1rem;margin:2.25rem 0}
-.tier-card{border:1px solid var(--line);background:var(--card);border-radius:18px;padding:2.1rem;position:relative;display:flex;flex-direction:column;box-shadow:var(--shadow-sm);transition:box-shadow 0.25s,border-color 0.25s}
-.tier-card:hover{box-shadow:var(--shadow-md)}
-.tier-card.featured{border-color:rgba(11,122,85,0.45);box-shadow:var(--shadow-md)}
-.tier-card.featured::before{content:'';position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 4px 4px;background:var(--accent)}
-.tier-badge{display:inline-block;align-self:flex-start;font-size:0.64rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;background:var(--accent);color:#fff;padding:0.32rem 0.7rem;border-radius:999px;margin-bottom:1rem}
-.tier-name{font-size:0.78rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-strong);margin-bottom:0.2rem}
-.tier-sub{font-size:0.92rem;color:var(--muted);margin-bottom:1.1rem}
-.tier-price-row{display:flex;align-items:flex-start;gap:0.15rem;margin-bottom:0.15rem}
-.tier-dollar{font-size:1.15rem;font-weight:700;color:var(--accent);margin-top:0.55rem}
-.tier-price{font-size:3rem;font-weight:800;letter-spacing:-0.03em;color:var(--ink);line-height:1}
-.tier-period{font-size:0.9rem;font-weight:500;color:var(--muted);align-self:flex-end;margin-bottom:0.35rem}
-.tier-note{font-size:0.86rem;color:var(--muted);line-height:1.55;margin-bottom:1.4rem}
-.tier-items{list-style:none;flex:1;margin-bottom:1.6rem;display:flex;flex-direction:column;gap:0.6rem}
-.tier-items li{display:flex;gap:0.6rem;font-size:0.94rem;color:var(--body);align-items:flex-start;line-height:1.55}
-.tier-items li span{font-size:0.6rem;margin-top:0.42rem;flex-shrink:0;color:var(--accent)}
-.tier-action a{display:block;text-align:center;font-size:0.92rem;font-weight:600;letter-spacing:0.01em;padding:0.95rem;border-radius:11px;border:1px solid var(--line-strong);color:var(--ink);text-decoration:none;background:#fff;transition:all 0.2s;margin-top:auto}
-.tier-action a:hover{border-color:var(--ink)}
-.tier-card.featured .tier-action a{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 10px 24px -10px rgba(11,122,85,0.55)}
-.tier-card.featured .tier-action a:hover{background:var(--accent-strong)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+.card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:1.9rem;display:flex;flex-direction:column;box-shadow:var(--shadow-sm);transition:transform .25s,box-shadow .25s,border-color .25s}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--line-strong)}
+.card h3{font-size:1.2rem;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
+.card-tag{font-size:.9rem;color:var(--muted);margin:.3rem 0 1.4rem;min-height:2.7em}
+.card .price-row{margin-top:0}
+.card .price-big{font-size:2.6rem;color:var(--ink)}
+.card .price-unit{color:var(--muted)}
+.card .price-plus{color:var(--body);font-weight:600;margin-top:.5rem}
+.card-terms{font-size:.8rem;color:var(--muted);margin:.55rem 0 1.4rem;line-height:1.55}
+.card .checks{flex:1;margin-bottom:1.6rem;gap:.65rem}
+.card .checks li{font-size:.9rem;color:var(--body)}
+.card-note{font-size:.78rem;color:var(--muted);background:var(--alt);border-radius:12px;padding:.8rem .9rem;margin-bottom:1.3rem;line-height:1.55}
 
-/* Guarantee box */
-.guarantee-box{border:1px solid rgba(11,122,85,0.35);background:var(--accent-soft);border-radius:var(--radius);padding:1.3rem 1.6rem;margin:1.5rem auto;max-width:860px;display:flex;align-items:center;gap:1.1rem}
-.guarantee-icon{font-size:1.25rem;flex-shrink:0;color:var(--accent)}
-.guarantee-label{font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-strong);margin-bottom:0.25rem}
-.guarantee-text{font-size:0.95rem;color:var(--body);line-height:1.6}
+.promise{display:flex;align-items:center;gap:1.2rem;margin-top:1.4rem;padding:1.4rem 1.7rem;border:1px solid rgba(10,127,87,.28);background:var(--accent-soft);border-radius:20px}
+.promise-ic{flex-shrink:0;width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700}
+.promise b{display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:.2rem}
+.promise p{font-size:.96rem;color:var(--body)}
 
-/* Retainers */
-.retainer-label{font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink);margin-bottom:0.8rem}
-.retainer-intro{font-size:0.98rem;color:var(--body);line-height:1.75;max-width:660px;margin-bottom:1.6rem}
-.retainer-grid{display:grid;grid-template-columns:minmax(min(100%,520px),520px);gap:1rem;margin-bottom:2rem}
-.retainer-card{border:1px solid var(--line);background:var(--card);border-radius:16px;padding:1.7rem;position:relative;box-shadow:var(--shadow-sm)}
-.retainer-card.featured{border-color:rgba(11,122,85,0.4)}
-.retainer-price{font-size:1.9rem;font-weight:800;letter-spacing:-0.02em;color:var(--ink);margin-bottom:0.2rem}
-.retainer-name{font-size:0.7rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-strong);margin-bottom:1rem}
-.retainer-items{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
-.retainer-items li{display:flex;gap:0.55rem;font-size:0.9rem;color:var(--body);align-items:flex-start;line-height:1.55}
-.retainer-items li span{color:var(--accent);font-size:0.55rem;margin-top:0.4rem;flex-shrink:0}
+/* compare */
+.cmp{margin-top:3rem;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#fff;box-shadow:var(--shadow-sm)}
+.cmp-row{display:grid;grid-template-columns:.8fr 1.1fr 1.1fr;gap:0;border-bottom:1px solid var(--line)}
+.cmp-row:last-child{border-bottom:none}
+.cmp-row>div{padding:1.15rem 1.5rem;font-size:.93rem}
+.cmp-head>div{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);background:var(--alt);padding:1rem 1.5rem}
+.cmp-head>div:last-child{color:var(--accent-deep)}
+.cmp-k{font-weight:600;color:var(--ink)}
+.cmp-old{color:var(--muted)}
+.cmp-new{color:var(--ink);font-weight:500;background:linear-gradient(90deg,rgba(232,246,239,.7),transparent)}
 
-/* Comparison table */
-.compare-wrap{overflow-x:auto;margin-top:1rem;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:var(--shadow-sm)}
-.compare-title{font-size:1.05rem;font-weight:700;letter-spacing:-0.01em;color:var(--ink);margin:2.75rem 0 1.1rem}
-.compare-table{width:100%;border-collapse:collapse;min-width:540px}
-.compare-table th{font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);padding:1rem 1.25rem;text-align:left;border-bottom:1px solid var(--line);background:var(--alt)}
-.compare-table th:last-child{color:var(--accent-strong)}
-.compare-table td{padding:1rem 1.25rem;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55;font-size:0.92rem;color:var(--muted)}
-.compare-table tr:last-child td{border-bottom:none}
-.compare-table td:first-child{color:var(--ink);font-size:0.9rem;font-weight:600;letter-spacing:0}
-.compare-table td.new-way{color:var(--body);font-weight:500}
-.compare-table tr:nth-child(even){background:#FBFCFC}
+/* process */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:3rem;position:relative}
+.step{background:#fff;border:1px solid var(--line);border-radius:20px;padding:1.5rem;box-shadow:var(--shadow-sm);position:relative}
+.step-n{font-family:var(--serif);font-style:italic;font-size:2.1rem;color:var(--accent);line-height:1}
+.step h3{font-size:1rem;font-weight:700;color:var(--ink);margin:.9rem 0 .15rem;letter-spacing:-.01em}
+.step-d{font-size:.74rem;font-weight:700;letter-spacing:.06em;color:var(--accent-deep);margin-bottom:.6rem}
+.step p{font-size:.86rem;color:var(--muted);line-height:1.6}
+.chips{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.4rem}
+.chip{font-size:.85rem;font-weight:500;color:var(--ink);background:#fff;border:1px solid var(--line-strong);padding:.5rem .95rem;border-radius:999px}
+.chip-accent{background:var(--accent-soft);border-color:rgba(10,127,87,.25);color:var(--accent-deep);font-weight:600}
 
-/* Stack pills */
-.stack-label{font-size:0.68rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:0.7rem}
-.stack-pills{display:flex;gap:0.5rem;flex-wrap:wrap}
-.stack-pill{font-size:0.72rem;font-weight:600;letter-spacing:0.04em;border:1px solid var(--line);background:#fff;color:var(--muted);padding:0.32rem 0.75rem;border-radius:999px}
+/* manifesto */
+.manifesto{background:var(--dark);color:#fff;padding:clamp(4rem,8vw,6.5rem) 0;position:relative;overflow:hidden;text-align:center}
+.manifesto::before{content:'';position:absolute;left:50%;top:-50%;transform:translateX(-50%);width:800px;height:600px;background:radial-gradient(circle,rgba(24,197,138,.22),transparent 65%);pointer-events:none}
+.manifesto blockquote{position:relative;font-family:var(--serif);font-size:clamp(1.55rem,3.4vw,2.5rem);line-height:1.3;letter-spacing:-.01em;max-width:900px;margin:0 auto}
+.manifesto cite{position:relative;display:block;margin-top:1.8rem;font-style:normal;font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-bright)}
 
-/* Process steps */
-.process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,196px),1fr));gap:1rem;margin-top:2.25rem}
-.process-step{border:1px solid var(--line);background:#fff;border-radius:16px;padding:1.6rem;position:relative;box-shadow:var(--shadow-sm)}
-.step-num{font-size:1.7rem;font-weight:800;letter-spacing:-0.02em;color:rgba(11,122,85,0.22);line-height:1;margin-bottom:0.85rem}
-.step-label{font-size:0.86rem;font-weight:700;letter-spacing:0.01em;color:var(--ink);margin-bottom:0.3rem}
-.step-time{font-size:0.76rem;font-weight:600;color:var(--accent-strong);margin-bottom:0.55rem}
-.step-desc{font-size:0.88rem;color:var(--muted);line-height:1.65}
+/* proof */
+.proof{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem}
+.pcard{background:#fff;border:1px solid var(--line);border-radius:20px;padding:1.6rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.pcard:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.ptag{font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.pcard h3{font-size:1.05rem;font-weight:700;letter-spacing:-.015em;color:var(--ink);margin:.55rem 0 .5rem}
+.pcard p{font-size:.9rem;color:var(--muted);line-height:1.65;flex:1}
+.pstack{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.1rem}
+.pill-s{font-size:.7rem;font-weight:600;color:var(--muted);border:1px solid var(--line);padding:.25rem .65rem;border-radius:999px;background:var(--alt)}
 
-/* Who this is for */
-.audience-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:0.85rem;margin-top:1.1rem}
-.audience-card{border:1px solid var(--line);border-radius:14px;padding:1.25rem;background:#fff;box-shadow:var(--shadow-sm)}
-.audience-card p:first-child{font-size:0.95rem;font-weight:700;color:var(--ink);margin-bottom:0.3rem}
-.audience-card p:last-child{font-size:0.88rem;color:var(--muted);line-height:1.55}
+/* faq */
+.faq{max-width:820px;margin:3rem auto 0}
+.faq details{border-bottom:1px solid var(--line);padding:1.25rem 0}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-size:1.05rem;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';font-size:1.4rem;font-weight:400;color:var(--accent);transition:transform .2s;flex-shrink:0}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{margin-top:.8rem;font-size:.97rem;color:var(--muted);line-height:1.7;max-width:700px}
 
-/* MANIFESTO BANNER */
-.manifesto-banner{padding:clamp(3rem,6vw,4.5rem) clamp(1rem,4vw,3rem);text-align:center;background:#0B1220;border-top:1px solid #0B1220;border-bottom:1px solid #0B1220}
-.manifesto-banner blockquote{font-size:clamp(1.15rem,2.4vw,1.5rem);font-weight:600;color:#FFFFFF;max-width:780px;margin:0 auto;line-height:1.55;letter-spacing:-0.01em}
-.manifesto-banner cite{display:block;margin-top:1.4rem;font-size:0.68rem;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent-light);font-style:normal}
-
-/* PORTFOLIO */
-.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:1rem;margin-top:2.25rem}
-.portfolio-card{border:1px solid var(--line);background:#fff;border-radius:16px;padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;box-shadow:var(--shadow-sm);transition:box-shadow 0.25s}
-.portfolio-card:hover{box-shadow:var(--shadow-md)}
-.portfolio-bar{width:3px;background:var(--accent);flex-shrink:0;border-radius:2px;align-self:stretch}
-.portfolio-tag{font-size:0.66rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent-strong);margin-bottom:0.4rem}
-.portfolio-card h3{font-size:1.02rem;font-weight:700;letter-spacing:-0.01em;color:var(--ink);margin-bottom:0.45rem}
-.portfolio-card p.desc{font-size:0.9rem;color:var(--muted);line-height:1.65}
-.portfolio-stack{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.85rem}
-
-/* BOOK-A-CALL / CONTACT */
-.contact-section{background:var(--alt);border-top:1px solid var(--line);text-align:center}
-.contact-inner{max-width:720px;margin:0 auto}
-.contact-title span{color:var(--accent)}
-.contact-copy{font-size:1.05rem;color:var(--body);line-height:1.75;margin:1.4rem auto 2.5rem}
-.contact-btn-row{display:flex;gap:0.85rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.25rem}
-.contact-info-row{display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem}
-.contact-info-row:last-of-type{margin-bottom:0}
-.contact-info-col{text-align:center}
-.contact-info-col .lbl{font-size:0.66rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem}
-.contact-info-col .val{font-size:0.92rem;font-weight:500;color:var(--accent-strong);text-decoration:none}
-.contact-info-col .val:hover{color:var(--accent)}
-
-/* Cal.com inline embed */
-.cal-embed-wrap{max-width:720px;margin:0 auto 2.5rem;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:var(--shadow-md);padding:1.4rem;position:relative;overflow:hidden;text-align:left}
-.cal-embed-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
-.cal-embed-label{font-size:0.7rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-strong);margin-bottom:1rem;text-align:center}
+/* contact */
+.contact{background:var(--alt);border-top:1px solid var(--line);text-align:center}
+.contact .lede{margin-left:auto;margin-right:auto}
+.cal{max-width:760px;margin:2.5rem auto 2rem;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow-md);padding:1.4rem;text-align:left;position:relative;overflow:hidden}
+.cal::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-bright))}
+.cal-label{text-align:center;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:1rem}
 #my-cal-inline-15min{min-height:600px}
+.contact-row{display:flex;justify-content:center;gap:clamp(1.5rem,4vw,3rem);flex-wrap:wrap;margin-top:2rem}
+.contact-col .lbl{font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.25rem}
+.contact-col a,.contact-col span.v{font-size:.95rem;font-weight:500;color:var(--accent-deep);text-decoration:none}
+.contact-col a:hover{color:var(--accent)}
 
-/* CHATBOT WIDGET */
-.chatbot-widget{position:fixed;bottom:1.5rem;right:1.5rem;z-index:100;display:flex;flex-direction:column;align-items:flex-end;gap:0.75rem}
-.chatbot-bubble{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-lg);width:min(340px,calc(100vw - 2rem));display:none;flex-direction:column;overflow:hidden}
-.chatbot-bubble.open{display:flex}
-.chat-header{padding:1rem 1.15rem;border-bottom:1px solid var(--line);background:var(--accent-soft)}
-.chat-header strong{color:var(--accent-strong);font-size:0.78rem;font-weight:700;letter-spacing:0.04em;display:block}
-.chat-header span{font-size:0.76rem;color:var(--muted)}
-.chatbot-btn{width:58px;height:58px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.35rem;color:#fff;box-shadow:0 14px 30px -8px rgba(11,122,85,0.55);transition:transform 0.2s,background 0.2s}
-.chatbot-btn:hover{transform:scale(1.06);background:var(--accent-strong)}
-.chat-input-row{display:flex;border-top:1px solid var(--line);background:#fff}
-.chat-input-row input{flex:1;background:#fff;border:none;padding:0.8rem 1rem;color:var(--ink);font-size:0.92rem;font-family:'Inter',sans-serif;outline:none}
-.chat-input-row input::placeholder{color:var(--faint)}
-.chat-input-row button{background:var(--accent);color:#fff;border:none;padding:0.8rem 1.05rem;cursor:pointer;font-family:'Inter',sans-serif;font-size:0.8rem;font-weight:600;letter-spacing:0.02em;flex-shrink:0;transition:background 0.2s}
-.chat-input-row button:hover{background:var(--accent-strong)}
-.chat-input-row button:disabled{opacity:0.5;cursor:not-allowed}
-.chat-messages{max-height:280px;min-height:130px;overflow-y:auto;display:flex;flex-direction:column;gap:0.55rem;padding:0.9rem}
-.chat-msg{font-size:0.9rem;line-height:1.55;padding:0.55rem 0.75rem;max-width:88%;border-radius:12px}
-.chat-msg.user{background:var(--accent);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
-.chat-msg.bot{background:var(--alt);color:var(--body);align-self:flex-start;border-bottom-left-radius:4px}
-.chat-typing{display:flex;gap:0.32rem;align-items:center;padding:0.55rem 0.75rem}
-@keyframes blink{0%,80%,100%{opacity:0.25}40%{opacity:1}}
-.chat-typing span{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 1.2s infinite}
-.chat-typing span:nth-child(2){animation-delay:0.2s}
-.chat-typing span:nth-child(3){animation-delay:0.4s}
+/* footer */
+.foot{background:#fff;border-top:1px solid var(--line);padding:2.2rem 0}
+.foot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.2rem}
+.foot-tag{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.5rem}
+.foot-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.foot-links a{font-size:.84rem;color:var(--muted);text-decoration:none}
+.foot-links a:hover{color:var(--ink)}
+.foot-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted)}
 
-/* FOOTER */
-footer{border-top:1px solid var(--line);background:#fff;padding:2rem clamp(1rem,4vw,3rem)}
-.footer-inner{max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-.footer-brand{font-weight:800;font-size:0.92rem;letter-spacing:0.16em;color:var(--ink)}
-.footer-tag{font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem}
-.footer-links{display:flex;gap:1.4rem;flex-wrap:wrap}
-.footer-links a{font-size:0.8rem;font-weight:500;color:var(--muted);text-decoration:none;transition:color 0.2s}
-.footer-links a:hover{color:var(--ink)}
-.footer-copy{font-size:0.8rem;color:var(--muted)}
+/* chat */
+.chat{position:fixed;bottom:1.3rem;right:1.3rem;z-index:100;display:flex;flex-direction:column;align-items:flex-end;gap:.8rem}
+.chat-box{display:none;flex-direction:column;width:min(370px,calc(100vw - 2rem));background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-lg);overflow:hidden}
+.chat-box.open{display:flex;animation:pop .25s cubic-bezier(.22,.61,.36,1)}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+.chat-top{display:flex;align-items:center;gap:.75rem;padding:1rem 1.15rem;background:linear-gradient(135deg,var(--accent-deep),var(--accent));color:#fff}
+.chat-top .ava{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center}
+.chat-top strong{display:block;font-size:.88rem;line-height:1.2}
+.chat-top span{font-size:.74rem;opacity:.8}
+.chat-msgs{max-height:300px;min-height:150px;overflow-y:auto;display:flex;flex-direction:column;gap:.55rem;padding:1rem;background:var(--bg)}
+.msg{font-size:.9rem;line-height:1.55;padding:.6rem .85rem;max-width:88%;border-radius:14px}
+.msg.user{background:var(--accent);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.msg.bot{background:#fff;color:var(--body);align-self:flex-start;border:1px solid var(--line);border-bottom-left-radius:4px}
+.quick{display:flex;flex-wrap:wrap;gap:.4rem;padding:0 1rem .9rem;background:var(--bg)}
+.quick button{font-family:inherit;font-size:.76rem;font-weight:600;color:var(--accent-deep);background:var(--accent-soft);border:1px solid rgba(10,127,87,.22);padding:.4rem .75rem;border-radius:999px;cursor:pointer;transition:background .2s}
+.quick button:hover{background:#d6efe3}
+.typing{display:flex;gap:.3rem;padding:.6rem .85rem}
+.typing span{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 1.2s infinite}
+.typing span:nth-child(2){animation-delay:.2s}
+.typing span:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+.chat-in{display:flex;border-top:1px solid var(--line);background:#fff}
+.chat-in input{flex:1;border:none;outline:none;padding:.9rem 1rem;font-size:.92rem;font-family:inherit;color:var(--ink);background:#fff}
+.chat-in input::placeholder{color:var(--faint)}
+.chat-in button{background:var(--accent);color:#fff;border:none;padding:0 1.2rem;font-size:.82rem;font-weight:600;font-family:inherit;cursor:pointer;transition:background .2s}
+.chat-in button:hover{background:var(--accent-deep)}
+.chat-in button:disabled{opacity:.5;cursor:not-allowed}
+.chat-fab{width:60px;height:60px;border-radius:50%;border:none;cursor:pointer;background:var(--accent);color:#fff;font-size:1.4rem;display:grid;place-items:center;box-shadow:0 16px 34px -10px rgba(10,127,87,.7);transition:transform .2s,background .2s}
+.chat-fab:hover{transform:scale(1.06);background:var(--accent-deep)}
 
-@media(max-width:767px){
-  .nav-links{display:none}
-  .compare-table{min-width:520px}
-  .tier-card{padding:1.6rem}
-  .guarantee-box{flex-direction:column;align-items:flex-start}
-  .hero{padding-top:5.5rem}
+/* responsive */
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr}
+  .mock{margin:1rem auto 0}
+  .mock-float{display:none}
+  .feat{grid-template-columns:1fr}
+  .feat-r{border-left:none;border-top:1px solid rgba(255,255,255,.08)}
+  .cards,.proof,.leaks{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:700px){
+  .nav-links a:not(.btn){display:none}
+  .strip-grid{grid-template-columns:1fr 1fr}
+  .strip-item:nth-child(2){border-right:none}
+  .strip-item:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .cards,.proof,.leaks,.steps{grid-template-columns:1fr}
+  .cmp-row{grid-template-columns:1fr}
+  .cmp-head{display:none}
+  .cmp-row>div{padding:.55rem 1.25rem}
+  .cmp-row>div:first-child{padding-top:1.1rem;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep)}
+  .cmp-row>div:last-child{padding-bottom:1.1rem}
+  .promise{flex-direction:column;align-items:flex-start}
+  .btn{width:100%}
+  .hero-cta .btn{flex:1 1 100%}
+  .nav-links .btn{width:auto}
 }
 `}</style>
 
       {/* NAV */}
-      <nav className="topnav">
-        <div className="nav-inner">
-          <a className="nav-logo" href="#">
-            EXCELSUS AGENCY
+      <nav className="nav">
+        <div className="wrap nav-in">
+          <a className="brand" href="#top">
+            <span className="brand-mark">E</span>
+            EXCELSUS
           </a>
           <div className="nav-links">
-            <a href="#pricing">Services</a>
-            <a href="#portfolio">Proof</a>
+            <a href="#systems">Systems</a>
             <a href="#process">Process</a>
-            <a href="#book-call" className="nav-cta">
-              Book a Call
+            <a href="#proof">Proof</a>
+            <a href="#faq">FAQ</a>
+            <a href="#book-call" className="btn btn-primary">
+              Book a call
             </a>
           </div>
         </div>
       </nav>
 
       {/* HERO */}
-      <section className="hero">
-        <div className="hero-bg">
-          <div className="hero-glow"></div>
-          <div className="hero-line"></div>
-        </div>
-        <p className="hero-eyebrow animate-rise">Growth Systems for Businesses · Anywhere in the World</p>
-        <div className="hero-divider"></div>
-        <h1
-          className="animate-rise"
-          style={{ animationDelay: "0.15s", opacity: "0" }}
-        >
-          Your Business Should
-          <br />
-          <span className="gold-shimmer">Never Miss a Customer.</span>
-        </h1>
-        <p
-          className="hero-sub animate-rise"
-          style={{ animationDelay: "0.3s", opacity: "0" }}
-        >
-          An AI receptionist that answers every call. Ads that bring buyers
-          to your door. A website that books jobs on its own. Campaigns that
-          wake up the customers you already earned. Pick your leak — we build
-          the system, run it, and report what it made you.
-        </p>
-        <p
-          className="hero-tagline animate-rise"
-          style={{ animationDelay: "0.4s", opacity: "0" }}
-        >
-          AI Voice Receptionist · Ads · Booking Systems · Reactivation
-        </p>
-        <div
-          className="hero-btns animate-rise"
-          style={{ animationDelay: "0.5s", opacity: "0" }}
-        >
-          <a href="#book-call" className="btn-primary">
-            Book a 15-Minute Call
-          </a>
-          <a href="#pricing" className="btn-ghost">
-            See What You Get
-          </a>
-        </div>
-      </section>
+      <header className="hero" id="top">
+        <div className="wrap hero-grid">
+          <div>
+            <span className="pill reveal">
+              <span className="dot"></span>
+              Growth systems for businesses · Anywhere in the world
+            </span>
+            <h1 className="reveal">
+              Never miss
+              <br />a <em>customer</em> again.
+            </h1>
+            <p className="hero-sub reveal">
+              An AI receptionist that answers every call. Ads that bring buyers
+              to your door. A website that books jobs on its own. Campaigns
+              that wake up the customers you already earned. Pick your leak.
+              We build the system, run it, and report what it made you.
+            </p>
+            <div className="hero-cta reveal">
+              <a href="#book-call" className="btn btn-primary">
+                Book a 15-minute call
+              </a>
+              <a href="#systems" className="btn btn-ghost">
+                See the systems
+              </a>
+            </div>
+            <div className="hero-trust reveal">
+              <span>
+                <i>✓</i> Fixed public prices
+              </span>
+              <span>
+                <i>✓</i> Done for you
+              </span>
+              <span>
+                <i>✓</i> English & Spanish
+              </span>
+            </div>
+          </div>
 
-      {/* PROOF / STATS STRIP */}
-      <div className="proof-strip">
-        <div className="proof-grid">
-          <div>
-            <div className="proof-stat">7</div>
-            <div className="proof-label">Days to Launch</div>
+          <div className="reveal" aria-hidden="true">
+            <div className="mock">
+              <div className="mock-head">
+                <div className="mock-who">
+                  <div className="mock-ava">📞</div>
+                  <div>
+                    <div className="mock-title">Incoming call · 8:42 PM</div>
+                    <div className="mock-sub">After hours</div>
+                  </div>
+                </div>
+                <span className="mock-live">
+                  <span className="dot"></span>Answered
+                </span>
+              </div>
+              <div className="bubble b-caller">
+                <small>Caller</small>
+                Hi, my kitchen sink is leaking and I need someone out as soon
+                as possible.
+              </div>
+              <div className="bubble b-ai">
+                <small>AI receptionist</small>
+                I can get you booked. We have tomorrow at 9:00 AM open. What's
+                the best number and address for the visit?
+              </div>
+              <div className="mock-result">
+                <div className="mock-chip">
+                  <b>Booked</b>
+                  <span>Tomorrow · 9:00 AM</span>
+                </div>
+                <div className="mock-chip">
+                  <b>Owner alert</b>
+                  <span>Summary sent</span>
+                </div>
+              </div>
+              <p className="mock-cap">Illustrative example of a call</p>
+            </div>
           </div>
-          <div>
-            <div className="proof-stat">24/7</div>
-            <div className="proof-label">Always Answering</div>
-          </div>
-          <div>
-            <div className="proof-stat">4</div>
-            <div className="proof-label">Growth Systems</div>
-          </div>
-          <div>
-            <div className="proof-stat">100%</div>
-            <div className="proof-label">Done For You</div>
-          </div>
+        </div>
+      </header>
+
+      {/* STRIP */}
+      <div className="strip">
+        <div className="wrap strip-grid">
+          {[
+            ["7", "Days to launch"],
+            ["24/7", "Always answering"],
+            ["4", "Growth systems"],
+            ["1", "Point of contact"],
+          ].map(([n, l]) => (
+            <div className="strip-item" key={l}>
+              <div className="strip-n">{n}</div>
+              <div className="strip-l">{l}</div>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* PRICING */}
-      <section id="pricing">
-        <div className="section-inner">
-          <div className="section-head" style={{ textAlign: "left" }}>
-            <span className="section-eyebrow">What We Do</span>
-            <h2 className="section-title">
-              Pick the Leak.
-              <br />
-              We Plug It.
-            </h2>
-            <p className="section-sub" style={{ marginLeft: "0" }}>
-              Every business loses money in a different place — a phone that
-              rings out, leads that never get followed up, ads nobody manages,
-              a customer list asleep in a drawer. Four systems, each built to
-              plug one leak. Fixed prices, everything run for you, no
-              surprises on the call.
-            </p>
+      {/* LEAKS */}
+      <section className="sec">
+        <div className="wrap">
+          <span className="eyebrow reveal">The problem</span>
+          <h2 className="h2 reveal">
+            Most businesses don't have a product problem.
+            <br />
+            They have a <em>response</em> problem.
+          </h2>
+          <div className="leaks">
+            {LEAKS.map((l, i) => (
+              <div className="leak reveal" key={l.title}>
+                <div className="leak-n">0{i + 1}</div>
+                <h3>{l.title}</h3>
+                <p>{l.body}</p>
+              </div>
+            ))}
           </div>
+        </div>
+      </section>
 
-          <p className="service-copy">
-            Most businesses don't have a product problem. They have a
-            response problem. A customer calls at 8pm and gets voicemail. A
-            lead fills out a form and hears back tomorrow — or never. An old
-            customer is ready to buy again and nobody asks. Whoever answers
-            first wins the job — and most of the time, nobody answers.
-          </p>
-          <p className="service-copy">
-            Each system below fixes one of those leaks completely — set up
-            for you, run for you, and reported to you every month in plain
-            numbers. Most are live within 7 days of your intake.
-          </p>
-          <div className="advantage">
-            <p>Why It's Different</p>
-            <p>
-              You get an operator, not freelancer roulette. I'm an AI
-              engineer — I designed these systems, I built and run my own
-              platforms (Excelsus, HackLingo), and my delivery team builds
-              under my direction on every single job. One firm, one point of
-              contact, one report.
-            </p>
-          </div>
-
-          <div className="tier-grid" style={{ gridTemplateColumns: "minmax(min(100%, 680px), 680px)" }}>
-            <div className="tier-card featured">
-              <span className="tier-badge">Start Here — Most Popular</span>
-              <p className="tier-name">AI Voice Receptionist</p>
-              <p className="tier-sub">Every call answered. Every caller captured or booked.</p>
-              <div className="tier-price-row">
-                <span className="tier-dollar">$</span>
-                <span className="tier-price">497</span>
-                <span className="tier-period">setup</span>
-              </div>
-              <p className="tier-note">
-                One-time setup · then $397/month · cancel with 30 days' notice
-              </p>
-              <ul className="tier-items">
-                <li><span>✦</span> A natural-voice AI answers your phone 24/7 — nights, weekends, holidays</li>
-                <li><span>✦</span> Books appointments straight into your calendar</li>
-                <li><span>✦</span> Captures name, number, and need on every single call</li>
-                <li><span>✦</span> Answers questions from facts you approve — services, prices, hours</li>
-                <li><span>✦</span> Instant summary to you after every call</li>
-                <li><span>✦</span> Covers after-hours, overflow, or every call you get</li>
-                <li><span>✦</span> Never sick, never late, never quits — compare a $3,000+/month receptionist</li>
-              </ul>
-              <div className="tier-action">
-                <a href="#book-call">Book a 15-Minute Call</a>
-              </div>
-            </div>
-            <div className="tier-card">
-              <p className="tier-name">Ads Management</p>
-              <p className="tier-sub">Google + Meta campaigns, built and managed for you.</p>
-              <div className="tier-price-row">
-                <span className="tier-dollar">$</span>
-                <span className="tier-price">500</span>
-                <span className="tier-period">setup</span>
-              </div>
-              <p className="tier-note">
-                One-time setup · then $1,250/month management · ad spend stays
-                on your card (we recommend $1,500+/month) · 90-day minimum
-              </p>
-              <ul className="tier-items">
-                <li><span>✦</span> Campaign strategy, build, and launch on Google + Meta</li>
-                <li><span>✦</span> Ad copy and audience targeting done for you</li>
-                <li><span>✦</span> Weekly optimization — budget follows what works</li>
-                <li><span>✦</span> Monthly report: spend, leads, cost per lead — plain numbers</li>
-                <li><span>✦</span> Your ad accounts stay 100% yours, always</li>
-                <li><span>✦</span> Straight talk: ads bring traffic and inquiries — results vary, and no honest agency guarantees sales</li>
-              </ul>
-              <div className="tier-action">
-                <a href="#book-call">Book a 15-Minute Call</a>
-              </div>
-            </div>
-            <div className="tier-card">
-              <p className="tier-name">Website + AI Booking System</p>
-              <p className="tier-sub">A website that books jobs while you sleep.</p>
-              <div className="tier-price-row">
-                <span className="tier-dollar">$</span>
-                <span className="tier-price">997</span>
-                <span className="tier-period">setup</span>
-              </div>
-              <p className="tier-note">
-                One-time setup · then $497/month · 6-month minimum, then
-                month-to-month
-              </p>
-              <ul className="tier-items">
-                <li><span>✦</span> A fast new website, built for your business</li>
-                <li><span>✦</span> AI chat on every page, 24/7 — captures name, phone, and problem</li>
-                <li><span>✦</span> Instant lead alert to you + instant reply to the customer</li>
-                <li><span>✦</span> Follow-up emails to leads who didn't book — 4 emails over 7 days</li>
-                <li><span>✦</span> Online booking on every page</li>
-                <li><span>✦</span> Automatic review request after each job</li>
-                <li><span>✦</span> A 1-page monthly report: chats, leads, bookings</li>
-              </ul>
-              <div className="tier-action">
-                <a href="#book-call">Book a 15-Minute Call</a>
-              </div>
-            </div>
-            <div className="tier-card">
-              <p className="tier-name">Reactivation Campaign</p>
-              <p className="tier-sub">Wake up the customers you already earned.</p>
-              <div className="tier-price-row">
-                <span className="tier-dollar">$</span>
-                <span className="tier-price">750</span>
-                <span className="tier-period">one-off, from</span>
-              </div>
-              <p className="tier-note">
-                One-time · final price depends on list size, quoted on the call
-              </p>
-              <ul className="tier-items">
-                <li><span>✦</span> 2–3 emails written for your business, sent to your past customers</li>
-                <li><span>✦</span> You approve every word before anything sends</li>
-                <li><span>✦</span> Your list stays 100% yours — never shared, never reused</li>
-                <li><span>✦</span> Replies and bookings tracked for you</li>
-                <li><span>✦</span> A results report when the campaign ends</li>
-              </ul>
-              <div className="tier-action">
-                <a href="#book-call">Book a 15-Minute Call</a>
-              </div>
-            </div>
-          </div>
-
-          <div className="guarantee-box">
-            <span className="guarantee-icon">✓</span>
+      {/* SYSTEMS */}
+      <section className="sec" id="systems" style={{ background: "var(--alt)", paddingTop: "clamp(4rem,8vw,6rem)" }}>
+        <div className="wrap">
+          <div className="sys-head">
             <div>
-              <p className="guarantee-label">Our Promise</p>
-              <p className="guarantee-text">
-                Most systems live within 7 days of your completed intake
-                (ad campaigns within 14 days), and your first monthly report
-                lands within 30 days of launch. If we're late because of us,
-                we keep working free until it's live.
+              <span className="eyebrow reveal">What we do</span>
+              <h2 className="h2 reveal">
+                Pick the leak.
+                <br />
+                We <em>plug</em> it.
+              </h2>
+            </div>
+            <p className="lede reveal" style={{ marginTop: 0 }}>
+              Four systems, each built to plug one leak. Fixed prices, run for
+              you, reported monthly in plain numbers. No surprises on the call.
+            </p>
+          </div>
+
+          {/* Featured */}
+          <div className="feat reveal">
+            <div className="feat-l">
+              <span className="badge">Start here</span>
+              <h3>{SYSTEMS.featured.name}</h3>
+              <p className="feat-tag">{SYSTEMS.featured.tagline}</p>
+              <div className="price-row">
+                <span className="price-big">{SYSTEMS.featured.setup}</span>
+                <span className="price-unit">setup</span>
+              </div>
+              <p className="price-plus">
+                then {SYSTEMS.featured.monthly}/month
+              </p>
+              <p className="feat-terms">{SYSTEMS.featured.terms}</p>
+            </div>
+            <div className="feat-r">
+              <ul className="checks">
+                {SYSTEMS.featured.items.map((it) => (
+                  <li key={it}>{it}</li>
+                ))}
+              </ul>
+              <div className="feat-cta">
+                <a href="#book-call" className="btn btn-primary btn-block">
+                  Book a 15-minute call
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Others */}
+          <div className="cards">
+            {SYSTEMS.others.map((s) => (
+              <div className="card reveal" key={s.name}>
+                <h3>{s.name}</h3>
+                <p className="card-tag">{s.tagline}</p>
+                <div className="price-row">
+                  <span className="price-big">{s.setup}</span>
+                  <span className="price-unit">
+                    {s.monthly ? "setup" : "one-off, from"}
+                  </span>
+                </div>
+                {s.monthly && (
+                  <p className="price-plus">then {s.monthly}/month</p>
+                )}
+                <p className="card-terms">{s.terms}</p>
+                <ul className="checks">
+                  {s.items.map((it) => (
+                    <li key={it}>{it}</li>
+                  ))}
+                </ul>
+                {s.note && <p className="card-note">{s.note}</p>}
+                <a href="#book-call" className="btn btn-ghost btn-block">
+                  Book a 15-minute call
+                </a>
+              </div>
+            ))}
+          </div>
+
+          <div className="promise reveal">
+            <div className="promise-ic">✓</div>
+            <div>
+              <b>Our promise</b>
+              <p>
+                Most systems live within 7 days of your completed intake (ad
+                campaigns within 14 days), and your first monthly report lands
+                within 30 days of launch. If we're late because of us, we keep
+                working free until it's live.
               </p>
             </div>
           </div>
 
-          <p className="retainer-label" style={{ marginTop: "2.5rem" }}>
-            One Partner — Everything Run For You
+          <p className="lede reveal" style={{ marginTop: "1.6rem", fontSize: ".95rem" }}>
+            One partner, everything run for you: one point of contact, systems
+            monitored 24/7, small updates included, one plain monthly report.
+            Not sold here: hourly work, logos, standalone social posting, SEO
+            packages. If it's not one of the four systems above, ask on the
+            call. We'd rather tell you straight than sell you wrong.
           </p>
-          <p className="retainer-intro">
-            You don't get logins, homework, or freelancers to babysit. Every
-            system is monitored, updated, and reported on by Excelsus — you
-            get one point of contact and one plain monthly report.
-          </p>
-          <div className="retainer-grid">
-            <div className="retainer-card featured">
-              <p className="retainer-name">Every Month, For Every System</p>
-              <ul className="retainer-items">
-                <li><span>✦</span> One point of contact — Miguel, not a ticket queue</li>
-                <li><span>✦</span> One monthly report: calls, chats, leads, bookings, cost per lead</li>
-                <li><span>✦</span> Systems monitored and kept live 24/7</li>
-                <li><span>✦</span> Small updates included — prices, hours, services</li>
-                <li><span>✦</span> Add a second system any time — most clients do once the first one pays</li>
-              </ul>
+        </div>
+      </section>
+
+      {/* COMPARE */}
+      <section className="sec">
+        <div className="wrap">
+          <span className="eyebrow reveal">Why Excelsus</span>
+          <h2 className="h2 reveal">
+            Why not the <em>usual</em> way?
+          </h2>
+          <div className="cmp reveal">
+            <div className="cmp-row cmp-head">
+              <div>What matters</div>
+              <div>The usual way</div>
+              <div>Excelsus</div>
             </div>
-          </div>
-          <p className="retainer-intro">
-            Not sold here: hourly work, logos and branding, standalone social
-            posting, SEO packages. If it's not one of the four systems above,
-            ask on the call — we'd rather tell you straight than sell you
-            wrong.
-          </p>
-
-          <p className="compare-title">Why Not the Usual Way?</p>
-
-          <div className="compare-wrap">
-            <table className="compare-table">
-              <thead>
-                <tr>
-                  <th>What Matters</th>
-                  <th>Typical Website</th>
-                  <th>Excelsus</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Missed calls</td>
-                  <td>A receptionist: $3,000+/month, 9-to-5, sick days and turnover</td>
-                  <td className="new-way">AI receptionist answers 24/7 for $397/month</td>
-                </tr>
-                <tr>
-                  <td>Lead follow-up</td>
-                  <td>Whoever notices first — hours or days later</td>
-                  <td className="new-way">Instant alert to you, instant reply to the customer</td>
-                </tr>
-                <tr>
-                  <td>New customers</td>
-                  <td>Hope, referrals, and word of mouth</td>
-                  <td className="new-way">Managed Google + Meta ads with cost-per-lead reporting</td>
-                </tr>
-                <tr>
-                  <td>Past customers</td>
-                  <td>A list sitting in a drawer, going cold</td>
-                  <td className="new-way">A campaign that wakes them up and books them again</td>
-                </tr>
-                <tr>
-                  <td>Proof it works</td>
-                  <td>Gut feeling</td>
-                  <td className="new-way">One monthly report — plain numbers</td>
-                </tr>
-                <tr>
-                  <td>Who runs it</td>
-                  <td>You, on top of everything else</td>
-                  <td className="new-way">Excelsus — built, managed, reported</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p className="stack-label" style={{ marginTop: "2.5rem" }}>
-            Built On
-          </p>
-          <div className="stack-pills">
-            <span className="stack-pill">Next.js</span>
-            <span className="stack-pill">Supabase</span>
-            <span className="stack-pill">Stripe</span>
-            <span className="stack-pill">Vercel</span>
-            <span className="stack-pill">Resend</span>
-            <span className="stack-pill">Cal.com</span>
+            {COMPARE.map(([k, o, n]) => (
+              <div className="cmp-row" key={k}>
+                <div className="cmp-k">{k}</div>
+                <div className="cmp-old">{o}</div>
+                <div className="cmp-new">{n}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* PROCESS */}
-      <section
-        id="process"
-        style={{
-          background: "var(--stone2)",
-          borderTop: "1px solid rgba(201,168,76,0.08)",
-        }}
-      >
-        <div className="section-inner">
-          <div className="section-head" style={{ textAlign: "left" }}>
-            <span className="section-eyebrow">How It Works</span>
-            <h2 className="section-title">
-              From First Call to Working System in Days.
-            </h2>
-          </div>
-          <div className="process-steps">
-            {[
-              {
-                num: "01",
-                label: "Demo Call",
-                time: "Day 0",
-                desc: "15 minutes. We find the leak that's costing you the most customers. If we can't fix it, I'll tell you straight.",
-              },
-              {
-                num: "02",
-                label: "Say Yes",
-                time: "Day 0",
-                desc: "The setup fee for your system, paid online. No payment, no start — that keeps both of us serious.",
-              },
-              {
-                num: "03",
-                label: "Intake",
-                time: "Day 1",
-                desc: "A 15-minute form: services, prices, hours. You approve one page of facts — that's all your AI is ever allowed to say.",
-              },
-              {
-                num: "04",
-                label: "Build & Launch",
-                time: "Days 2–6",
-                desc: "Our team builds it, then we test it live with you watching — a real call, a real lead, end to end. Ad campaigns launch within 14 days.",
-              },
-              {
-                num: "05",
-                label: "Report & Grow",
-                time: "Day 30",
-                desc: "Your first monthly report lands: exactly what your systems produced, in plain numbers. Most clients add a second system here.",
-              },
-            ].map((step) => (
-              <div className="process-step" key={step.num}>
-                <div className="step-num">{step.num}</div>
-                <div className="step-label">{step.label}</div>
-                <div className="step-time">{step.time}</div>
-                <div className="step-desc">{step.desc}</div>
+      <section className="sec" id="process" style={{ background: "var(--alt)" }}>
+        <div className="wrap">
+          <span className="eyebrow reveal">How it works</span>
+          <h2 className="h2 reveal">
+            From first call to working system
+            <br />
+            in <em>days</em>.
+          </h2>
+          <div className="steps">
+            {STEPS.map((s) => (
+              <div className="step reveal" key={s.n}>
+                <div className="step-n">{s.n}</div>
+                <h3>{s.t}</h3>
+                <div className="step-d">{s.d}</div>
+                <p>{s.p}</p>
               </div>
             ))}
           </div>
 
-          <p className="compare-title">Who This Is For</p>
-          <div className="audience-grid">
-            <div className="audience-card">
-              <p>Home Services</p>
-              <p>Pest, HVAC, plumbing, roofing — your phone is your storefront</p>
-            </div>
-            <div className="audience-card">
-              <p>Medical & Dental</p>
-              <p>A drowning front desk, and after-hours calls going nowhere</p>
-            </div>
-            <div className="audience-card">
-              <p>Legal & Professional</p>
-              <p>Every unanswered call is a client who signed with someone else</p>
-            </div>
-            <div className="audience-card">
-              <p>Any Lead-Driven Business</p>
-              <p>Realtors, auto, salons, fitness — if a missed call costs you money, we fix it</p>
-            </div>
-            <div className="audience-card">
-              <p>Anywhere in the World</p>
-              <p>Remote-first, in English & Spanish — your customers never know or care where we sit</p>
-            </div>
+          <p className="eyebrow reveal" style={{ marginTop: "3.5rem" }}>
+            Who this is for
+          </p>
+          <div className="chips reveal">
+            {AUDIENCE.map((a) => (
+              <span className="chip" key={a}>
+                {a}
+              </span>
+            ))}
+            <span className="chip chip-accent">
+              Anywhere in the world · English & Spanish
+            </span>
           </div>
         </div>
       </section>
 
-      {/* MANIFESTO BANNER */}
-      <div className="manifesto-banner">
-        <blockquote>
-          "I'm not a freelancer guessing what might work, and this isn't a
-          template shop. I'm an AI engineer running a systems firm: we find
-          the leak that's costing you customers, plug it with a system that
-          runs 24/7, and report exactly what it produced. You run your
-          business. The systems run the rest."
-        </blockquote>
-        <cite>— Miguel Esteves, Founder, Excelsus Agency</cite>
+      {/* MANIFESTO */}
+      <div className="manifesto">
+        <div className="wrap">
+          <blockquote className="reveal">
+            "I'm not a freelancer guessing what might work, and this isn't a
+            template shop. I'm an AI engineer running a systems firm: we find
+            the leak costing you customers, plug it with a system that runs
+            24/7, and report exactly what it produced. You run your business.
+            The systems run the rest."
+          </blockquote>
+          <cite>Miguel Esteves · Founder, Excelsus Agency</cite>
+        </div>
       </div>
 
-      {/* PORTFOLIO */}
-      <section id="portfolio" style={{ background: "var(--stone2)" }}>
-        <div className="section-inner">
-          <div className="section-head" style={{ textAlign: "left" }}>
-            <span className="section-eyebrow">Proof of Work</span>
-            <h2 className="section-title">Built by an Engineer. Not a Template.</h2>
-            <p className="section-sub" style={{ marginLeft: "0" }}>
-              I don't resell page builders. I build and run real platforms —
-              and every system we run for you gets the same engineering, the
-              same standards, and the same accountability.
-            </p>
-          </div>
-
-          <div className="portfolio-grid">
-            <div className="portfolio-card">
-              <div className="portfolio-bar"></div>
-              <div>
-                <p className="portfolio-tag">Live Platform</p>
-                <h3>Excelsus</h3>
-                <p className="desc">
-                  Full-stack personal brand and membership platform. Next.js +
-                  Supabase + Stripe + Vercel. Auth, subscriptions, community,
-                  and an admin panel — built and maintained by me.
-                </p>
-                <div className="portfolio-stack">
-                  <span className="stack-pill">Next.js</span>
-                  <span className="stack-pill">Supabase</span>
-                  <span className="stack-pill">Stripe</span>
-                  <span className="stack-pill">Vercel</span>
+      {/* PROOF */}
+      <section className="sec" id="proof">
+        <div className="wrap">
+          <span className="eyebrow reveal">Proof of work</span>
+          <h2 className="h2 reveal">
+            Built by an engineer.
+            <br />
+            Not a <em>template</em>.
+          </h2>
+          <p className="lede reveal">
+            I don't resell page builders. I build and run real platforms, and
+            every system we run for you gets the same engineering, the same
+            standards, and the same accountability.
+          </p>
+          <div className="proof">
+            {PROOF.map((p) => (
+              <div className="pcard reveal" key={p.name}>
+                <span className="ptag">{p.tag}</span>
+                <h3>{p.name}</h3>
+                <p>{p.desc}</p>
+                <div className="pstack">
+                  {p.stack.map((s) => (
+                    <span className="pill-s" key={s}>
+                      {s}
+                    </span>
+                  ))}
                 </div>
               </div>
-            </div>
-            <div className="portfolio-card">
-              <div className="portfolio-bar"></div>
-              <div>
-                <p className="portfolio-tag">Live Platform</p>
-                <h3>HackLingo</h3>
-                <p className="desc">
-                  Gamified cybersecurity learning platform with an XP system for
-                  learning ethical hacking. Built from scratch on the same
-                  stack.
-                </p>
-                <div className="portfolio-stack">
-                  <span className="stack-pill">Next.js</span>
-                  <span className="stack-pill">Supabase</span>
-                  <span className="stack-pill">TypeScript</span>
-                </div>
-              </div>
-            </div>
-            <div className="portfolio-card">
-              <div className="portfolio-bar"></div>
-              <div>
-                <p className="portfolio-tag">Client Work</p>
-                <h3>Orlando Realtor — Roxanne Fernandez</h3>
-                <p className="desc">
-                  Full real estate listing site with lead capture and property
-                  inquiry forms for a local business in Orlando. Delivered in
-                  under a week. Same engineering, applied to a business that
-                  lives on leads.
-                </p>
-                <div className="portfolio-stack">
-                  <span className="stack-pill">Next.js</span>
-                  <span className="stack-pill">Vercel</span>
-                  <span className="stack-pill">SEO</span>
-                </div>
-              </div>
-            </div>
-            <div className="portfolio-card">
-              <div className="portfolio-bar"></div>
-              <div>
-                <p className="portfolio-tag">Security</p>
-                <h3>Security Hardening — Standard Practice</h3>
-                <p className="desc">
-                  OWASP Top 10, CSP headers, input validation, auth hardening.
-                  Every site I build is hardened by default — cybersecurity
-                  isn't an add-on, it's baked into the foundation.
-                </p>
-                <div className="portfolio-stack">
-                  <span className="stack-pill">OWASP</span>
-                  <span className="stack-pill">CSP</span>
-                  <span className="stack-pill">Auth</span>
-                </div>
-              </div>
-            </div>
-            <div className="portfolio-card">
-              <div className="portfolio-bar"></div>
-              <div>
-                <p className="portfolio-tag">Engineering</p>
-                <h3>Achlys — Custom Programming Language</h3>
-                <p className="desc">
-                  Built a complete programming language from scratch — lexer,
-                  parser, interpreter, standard library. Not a tutorial project.
-                  A working language. This is the caliber of thinking applied to
-                  every system I build.
-                </p>
-                <div className="portfolio-stack">
-                  <span className="stack-pill">Language Design</span>
-                  <span className="stack-pill">Systems Engineering</span>
-                  <span className="stack-pill">C / Rust</span>
-                </div>
-              </div>
-            </div>
-            <div className="portfolio-card">
-              <div className="portfolio-bar"></div>
-              <div>
-                <p className="portfolio-tag">Systems</p>
-                <h3>Custom OS / Kernel</h3>
-                <p className="desc">
-                  Wrote a kernel and operating system from scratch — memory
-                  management, process scheduling, system calls. The kind of
-                  low-level systems knowledge that informs how every application
-                  I build is architected.
-                </p>
-                <div className="portfolio-stack">
-                  <span className="stack-pill">Systems Programming</span>
-                  <span className="stack-pill">OS Design</span>
-                  <span className="stack-pill">C / Assembly / LLVM</span>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* BOOK A CALL / CONTACT */}
-      <section id="book-call" className="contact-section">
-        <div className="contact-inner">
-          <span className="section-eyebrow">
-            Book a Call · 15 Minutes
-          </span>
-          <h2 className="section-title contact-title">
-            Let's Talk About
+      {/* FAQ */}
+      <section className="sec" id="faq" style={{ background: "var(--alt)" }}>
+        <div className="wrap">
+          <div style={{ textAlign: "center" }}>
+            <span className="eyebrow reveal">Questions</span>
+            <h2 className="h2 reveal">
+              Straight <em>answers</em>.
+            </h2>
+          </div>
+          <div className="faq reveal">
+            {FAQ.map(([q, a]) => (
+              <details key={q}>
+                <summary>{q}</summary>
+                <p>{a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BOOK A CALL */}
+      <section className="sec contact" id="book-call">
+        <div className="wrap">
+          <span className="eyebrow reveal">Book a call · 15 minutes</span>
+          <h2 className="h2 reveal">
+            Let's find your
             <br />
-            <span>Your Biggest Leak.</span>
+            biggest <em>leak</em>.
           </h2>
-          <p className="contact-copy">
-            15 minutes. We look at where customers are slipping away — the
-            ringing phone, the slow follow-up, the sleeping list — and which
-            system plugs it first. Every price is already on this page;
-            there are no surprises on the call.
+          <p className="lede reveal">
+            15 minutes. We look at where customers are slipping away (the
+            ringing phone, the slow follow-up, the sleeping list) and which
+            system plugs it first. Every price is already on this page.
           </p>
-          <div className="contact-btn-row">
+          <div className="hero-cta reveal" style={{ justifyContent: "center" }}>
             <a
               href="mailto:alejandriosity@gmail.com?subject=Call — Excelsus Agency&body=Hi Miguel,%0A%0AI run a business and I'd like to book a 15-minute call.%0A%0A[Business name / what you sell / where you lose customers]"
-              className="btn-primary"
+              className="btn btn-primary"
             >
-              Book a 15-Minute Call
+              Email to book
             </a>
-            <a href="#pricing" className="btn-ghost">
-              Back to Services
+            <a href="#systems" className="btn btn-ghost">
+              Back to systems
             </a>
           </div>
 
-          {/* Cal inline embed */}
-          <div className="cal-embed-wrap">
-            <p className="cal-embed-label">Or Pick a Time Below</p>
+          <div className="cal reveal">
+            <p className="cal-label">Or pick a time below</p>
             <div
               style={{ width: "100%", height: "100%", overflow: "scroll" }}
               id="my-cal-inline-15min"
@@ -875,22 +983,21 @@ footer{border-top:1px solid var(--line);background:#fff;padding:2rem clamp(1rem,
             config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
             calLink: "miguelesteves/15min",
           });
-          Cal.ns["15min"]("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#0B7A55"},"dark":{"cal-brand":"#0B7A55"}},"hideEventTypeDetails":false,"layout":"month_view"});
+          Cal.ns["15min"]("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#0A7F57"},"dark":{"cal-brand":"#0A7F57"}},"hideEventTypeDetails":false,"layout":"month_view"});
         `,
             }}
           />
 
-          <div className="contact-info-row">
-            <div className="contact-info-col">
+          <div className="contact-row">
+            <div className="contact-col">
               <p className="lbl">Email</p>
-              <a className="val" href="mailto:alejandriosity@gmail.com">
+              <a href="mailto:alejandriosity@gmail.com">
                 alejandriosity@gmail.com
               </a>
             </div>
-            <div className="contact-info-col">
+            <div className="contact-col">
               <p className="lbl">LinkedIn</p>
               <a
-                className="val"
                 href="https://www.linkedin.com/in/miguel-esteves-129879314/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -898,84 +1005,83 @@ footer{border-top:1px solid var(--line);background:#fff;padding:2rem clamp(1rem,
                 Miguel Esteves
               </a>
             </div>
-            <div className="contact-info-col">
-              <p className="lbl">Service Area</p>
-              <span className="val">Worldwide · English & Spanish</span>
+            <div className="contact-col">
+              <p className="lbl">Service area</p>
+              <span className="v">Worldwide · English & Spanish</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer>
-        <div className="footer-inner">
-          <div>
-            <div className="footer-brand">EXCELSUS AGENCY</div>
-            <p className="footer-tag">Growth Systems for Businesses That Live on Leads</p>
+      <footer className="foot">
+        <div className="wrap">
+          <div className="foot-in">
+            <div>
+              <a className="brand" href="#top">
+                <span className="brand-mark">E</span>
+                EXCELSUS AGENCY
+              </a>
+              <p className="foot-tag">
+                Growth systems for businesses that live on leads
+              </p>
+            </div>
+            <div className="foot-links">
+              <a href="#systems">Systems</a>
+              <a href="#proof">Proof</a>
+              <a
+                href="https://excelsus.live"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Excelsus Platform
+              </a>
+              <a href="mailto:alejandriosity@gmail.com">
+                alejandriosity@gmail.com
+              </a>
+            </div>
           </div>
-          <div className="footer-links">
-            <a href="#pricing">Services</a>
-            <a href="#portfolio">Proof</a>
-            <a
-              href="https://excelsus.live"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Excelsus Platform
-            </a>
-            <a href="mailto:alejandriosity@gmail.com">
-              alejandriosity@gmail.com
-            </a>
+          <div className="foot-bot">
+            <span>© 2026 Excelsus Agency · Miguel Esteves</span>
+            <span style={{ fontStyle: "italic" }}>Excelsus — semper supra</span>
           </div>
-        </div>
-        <div
-          style={{
-            maxWidth: "1100px",
-            margin: "1.5rem auto 0",
-            borderTop: "1px solid rgba(201,168,76,0.08)",
-            paddingTop: "1.5rem",
-            display: "flex",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: "0.5rem",
-          }}
-        >
-          <p className="footer-copy">© 2026 Excelsus Agency — Miguel Esteves</p>
-          <p className="footer-copy" style={{ fontStyle: "italic" }}>
-            Excelsus — semper supra
-          </p>
         </div>
       </footer>
 
-      {/* CHATBOT WIDGET */}
-      <div className="chatbot-widget" id="chatWidget">
-        <div
-          className={`chatbot-bubble${chatOpen ? " open" : ""}`}
-          id="chatBubble"
-        >
-          <div className="chat-header">
-            <strong>Excelsus AI Assistant</strong>
-            <span>Systems · Pricing · What's included</span>
+      {/* CHAT */}
+      <div className="chat" id="chatWidget">
+        <div className={`chat-box${chatOpen ? " open" : ""}`} id="chatBubble">
+          <div className="chat-top">
+            <div className="ava">✦</div>
+            <div>
+              <strong>Excelsus AI Assistant</strong>
+              <span>Systems · Pricing · What's included</span>
+            </div>
           </div>
-          <div
-            className="chat-messages"
-            id="chatMessages"
-            ref={chatMessagesRef}
-          >
+          <div className="chat-msgs" id="chatMessages" ref={chatMessagesRef}>
             {chatMessages.map((m, i) => (
-              <div key={i} className={`chat-msg ${m.role}`}>
+              <div key={i} className={`msg ${m.role}`}>
                 {m.text}
               </div>
             ))}
             {chatLoading && (
-              <div className="chat-typing">
+              <div className="typing">
                 <span></span>
                 <span></span>
                 <span></span>
               </div>
             )}
           </div>
-          <div className="chat-input-row">
+          {chatMessages.length === 1 && !chatLoading && (
+            <div className="quick">
+              {QUICK_PROMPTS.map((q) => (
+                <button key={q} onClick={() => sendChat(q)}>
+                  {q}
+                </button>
+              ))}
+            </div>
+          )}
+          <div className="chat-in">
             <input
               type="text"
               id="chatInput"
@@ -987,15 +1093,16 @@ footer{border-top:1px solid var(--line);background:#fff;padding:2rem clamp(1rem,
               }}
               disabled={chatLoading}
             />
-            <button onClick={sendChat} disabled={chatLoading}>
+            <button onClick={() => sendChat()} disabled={chatLoading}>
               {chatLoading ? "..." : "Send"}
             </button>
           </div>
         </div>
         <button
-          className="chatbot-btn"
+          className="chat-fab"
           onClick={() => setChatOpen((v) => !v)}
           title="Chat with the Excelsus AI assistant"
+          aria-label="Open chat"
         >
           {chatOpen ? "✕" : "💬"}
         </button>
