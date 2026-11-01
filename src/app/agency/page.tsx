@@ -12,7 +12,7 @@ export default function AgencyPage() {
   const [chatMessages, setChatMessages] = useState<ChatMsg[]>([
     {
       role: "bot",
-      text: "Hey — I'm the Excelsus AI assistant. Ask me about the booking system, the price, or what's included. What do you need?",
+      text: "Hey — I'm the Excelsus AI assistant. Ask me about the voice receptionist, ads, the booking system, reactivation, or prices. What does your business do?",
     },
   ]);
   const chatMessagesRef = useRef<HTMLDivElement>(null);
@@ -288,7 +288,7 @@ footer{border-top:1px solid var(--line);background:#fff;padding:2rem clamp(1rem,
             EXCELSUS AGENCY
           </a>
           <div className="nav-links">
-            <a href="#pricing">The System</a>
+            <a href="#pricing">Services</a>
             <a href="#portfolio">Proof</a>
             <a href="#process">Process</a>
             <a href="#book-call" className="nav-cta">
@@ -304,29 +304,30 @@ footer{border-top:1px solid var(--line);background:#fff;padding:2rem clamp(1rem,
           <div className="hero-glow"></div>
           <div className="hero-line"></div>
         </div>
-        <p className="hero-eyebrow animate-rise">Booking Systems for Pest Control Companies · Tampa & Orlando</p>
+        <p className="hero-eyebrow animate-rise">Growth Systems for Businesses · Anywhere in the World</p>
         <div className="hero-divider"></div>
         <h1
           className="animate-rise"
           style={{ animationDelay: "0.15s", opacity: "0" }}
         >
-          Your Website Should
+          Your Business Should
           <br />
-          <span className="gold-shimmer">Book Jobs While You Sleep.</span>
+          <span className="gold-shimmer">Never Miss a Customer.</span>
         </h1>
         <p
           className="hero-sub animate-rise"
           style={{ animationDelay: "0.3s", opacity: "0" }}
         >
-          For pest control companies: a website with a 24/7 AI chat, instant
-          lead follow-up, online booking, and a campaign that brings your past
-          customers back. Live in 7 days.
+          An AI receptionist that answers every call. Ads that bring buyers
+          to your door. A website that books jobs on its own. Campaigns that
+          wake up the customers you already earned. Pick your leak — we build
+          the system, run it, and report what it made you.
         </p>
         <p
           className="hero-tagline animate-rise"
           style={{ animationDelay: "0.4s", opacity: "0" }}
         >
-          AI Chat · Instant Follow-Up · Online Booking · Reactivation
+          AI Voice Receptionist · Ads · Booking Systems · Reactivation
         </p>
         <div
           className="hero-btns animate-rise"
@@ -349,16 +350,16 @@ footer{border-top:1px solid var(--line);background:#fff;padding:2rem clamp(1rem,
             <div className="proof-label">Days to Launch</div>
           </div>
           <div>
-            <div className="proof-stat">$997</div>
-            <div className="proof-label">One-Time Setup</div>
-          </div>
-          <div>
-            <div className="proof-stat">$497</div>
-            <div className="proof-label">Per Month — Run For You</div>
-          </div>
-          <div>
             <div className="proof-stat">24/7</div>
-            <div className="proof-label">AI Chat Answering Customers</div>
+            <div className="proof-label">Always Answering</div>
+          </div>
+          <div>
+            <div className="proof-stat">4</div>
+            <div className="proof-label">Growth Systems</div>
+          </div>
+          <div>
+            <div className="proof-stat">100%</div>
+            <div className="proof-label">Done For You</div>
           </div>
         </div>
       </div>
@@ -367,86 +368,136 @@ footer{border-top:1px solid var(--line);background:#fff;padding:2rem clamp(1rem,
       <section id="pricing">
         <div className="section-inner">
           <div className="section-head" style={{ textAlign: "left" }}>
-            <span className="section-eyebrow">What You Get</span>
+            <span className="section-eyebrow">What We Do</span>
             <h2 className="section-title">
-              One System.
+              Pick the Leak.
               <br />
-              Built to Book Jobs.
+              We Plug It.
             </h2>
             <p className="section-sub" style={{ marginLeft: "0" }}>
-              Not a brochure website. A booking system, built only for pest
-              control companies, on the same stack I run my own platforms on.
-              One offer, one price — everything below is included.
+              Every business loses money in a different place — a phone that
+              rings out, leads that never get followed up, ads nobody manages,
+              a customer list asleep in a drawer. Four systems, each built to
+              plug one leak. Fixed prices, everything run for you, no
+              surprises on the call.
             </p>
           </div>
 
           <p className="service-copy">
-            Most pest control websites are brochures. A homeowner finds you at
-            9pm, can't book, can't ask a question — so they book whoever
-            answers first. This system is the fix: it answers, follows up, and
-            books, day and night, whether you're in the office or not.
+            Most businesses don't have a product problem. They have a
+            response problem. A customer calls at 8pm and gets voicemail. A
+            lead fills out a form and hears back tomorrow — or never. An old
+            customer is ready to buy again and nobody asks. Whoever answers
+            first wins the job — and most of the time, nobody answers.
           </p>
           <p className="service-copy">
-            Live in 7 days from your completed intake form. Built on Next.js /
-            Vercel / Cloudflare — engineered and security-hardened, not a
-            rented template.
+            Each system below fixes one of those leaks completely — set up
+            for you, run for you, and reported to you every month in plain
+            numbers. Most are live within 7 days of your intake.
           </p>
           <div className="advantage">
             <p>Why It's Different</p>
             <p>
-              I'm an AI engineer, not a template reseller. I built and run my
-              own platforms (Excelsus, HackLingo) and client sites on this
-              exact stack — so your system is engineered, fast, and hardened by
-              default, and the person who built it is the person you talk to
-              when something needs changing.
+              You get an operator, not freelancer roulette. I'm an AI
+              engineer — I designed these systems, I built and run my own
+              platforms (Excelsus, HackLingo), and my delivery team builds
+              under my direction on every single job. One firm, one point of
+              contact, one report.
             </p>
           </div>
 
-          <div className="tier-grid">
+          <div className="tier-grid" style={{ gridTemplateColumns: "minmax(min(100%, 680px), 680px)" }}>
             <div className="tier-card featured">
-              <span className="tier-badge">Founding Clients — Tampa & Orlando</span>
-              <p className="tier-name">The Booking System</p>
-              <p className="tier-sub">Everything included. One price.</p>
+              <span className="tier-badge">Start Here — Most Popular</span>
+              <p className="tier-name">AI Voice Receptionist</p>
+              <p className="tier-sub">Every call answered. Every caller captured or booked.</p>
+              <div className="tier-price-row">
+                <span className="tier-dollar">$</span>
+                <span className="tier-price">497</span>
+                <span className="tier-period">setup</span>
+              </div>
+              <p className="tier-note">
+                One-time setup · then $397/month · cancel with 30 days' notice
+              </p>
+              <ul className="tier-items">
+                <li><span>✦</span> A natural-voice AI answers your phone 24/7 — nights, weekends, holidays</li>
+                <li><span>✦</span> Books appointments straight into your calendar</li>
+                <li><span>✦</span> Captures name, number, and need on every single call</li>
+                <li><span>✦</span> Answers questions from facts you approve — services, prices, hours</li>
+                <li><span>✦</span> Instant summary to you after every call</li>
+                <li><span>✦</span> Covers after-hours, overflow, or every call you get</li>
+                <li><span>✦</span> Never sick, never late, never quits — compare a $3,000+/month receptionist</li>
+              </ul>
+              <div className="tier-action">
+                <a href="#book-call">Book a 15-Minute Call</a>
+              </div>
+            </div>
+            <div className="tier-card">
+              <p className="tier-name">Ads Management</p>
+              <p className="tier-sub">Google + Meta campaigns, built and managed for you.</p>
+              <div className="tier-price-row">
+                <span className="tier-dollar">$</span>
+                <span className="tier-price">500</span>
+                <span className="tier-period">setup</span>
+              </div>
+              <p className="tier-note">
+                One-time setup · then $1,250/month management · ad spend stays
+                on your card (we recommend $1,500+/month) · 90-day minimum
+              </p>
+              <ul className="tier-items">
+                <li><span>✦</span> Campaign strategy, build, and launch on Google + Meta</li>
+                <li><span>✦</span> Ad copy and audience targeting done for you</li>
+                <li><span>✦</span> Weekly optimization — budget follows what works</li>
+                <li><span>✦</span> Monthly report: spend, leads, cost per lead — plain numbers</li>
+                <li><span>✦</span> Your ad accounts stay 100% yours, always</li>
+                <li><span>✦</span> Straight talk: ads bring traffic and inquiries — results vary, and no honest agency guarantees sales</li>
+              </ul>
+              <div className="tier-action">
+                <a href="#book-call">Book a 15-Minute Call</a>
+              </div>
+            </div>
+            <div className="tier-card">
+              <p className="tier-name">Website + AI Booking System</p>
+              <p className="tier-sub">A website that books jobs while you sleep.</p>
               <div className="tier-price-row">
                 <span className="tier-dollar">$</span>
                 <span className="tier-price">997</span>
                 <span className="tier-period">setup</span>
               </div>
               <p className="tier-note">
-                One-time setup · then $497/month for us to run it · 6-month
-                minimum, then month-to-month
+                One-time setup · then $497/month · 6-month minimum, then
+                month-to-month
               </p>
               <ul className="tier-items">
-                <li>
-                  <span>✦</span> A fast new website — home, general pest,
-                  termite, rodent, and booking pages
-                </li>
-                <li>
-                  <span>✦</span> AI chat on every page, 24/7 — answers
-                  questions and captures name, phone, and problem
-                </li>
-                <li>
-                  <span>✦</span> Instant emails — you get an alert the second a
-                  lead comes in, the customer gets an instant reply
-                </li>
-                <li>
-                  <span>✦</span> Follow-up emails to leads who didn't book — 4
-                  emails over 7 days
-                </li>
-                <li>
-                  <span>✦</span> Online booking on every page
-                </li>
-                <li>
-                  <span>✦</span> Automatic review-request email after each job
-                </li>
-                <li>
-                  <span>✦</span> One email campaign to your past customers in
-                  Week 1
-                </li>
-                <li>
-                  <span>✦</span> A 1-page report every month: chats, leads, and
-                  bookings the system produced
-                </li>
+                <li><span>✦</span> A fast new website, built for your business</li>
+                <li><span>✦</span> AI chat on every page, 24/7 — captures name, phone, and problem</li>
+                <li><span>✦</span> Instant lead alert to you + instant reply to the customer</li>
+                <li><span>✦</span> Follow-up emails to leads who didn't book — 4 emails over 7 days</li>
+                <li><span>✦</span> Online booking on every page</li>
+                <li><span>✦</span> Automatic review request after each job</li>
+                <li><span>✦</span> A 1-page monthly report: chats, leads, bookings</li>
+              </ul>
+              <div className="tier-action">
+                <a href="#book-call">Book a 15-Minute Call</a>
+              </div>
+            </div>
+            <div className="tier-card">
+              <p className="tier-name">Reactivation Campaign</p>
+              <p className="tier-sub">Wake up the customers you already earned.</p>
+              <div className="tier-price-row">
+                <span className="tier-dollar">$</span>
+                <span className="tier-price">750</span>
+                <span className="tier-period">one-off, from</span>
+              </div>
+              <p className="tier-note">
+                One-time · final price depends on list size, quoted on the call
+              </p>
+              <ul className="tier-items">
+                <li><span>✦</span> 2–3 emails written for your business, sent to your past customers</li>
+                <li><span>✦</span> You approve every word before anything sends</li>
+                <li><span>✦</span> Your list stays 100% yours — never shared, never reused</li>
+                <li><span>✦</span> Replies and bookings tracked for you</li>
+                <li><span>✦</span> A results report when the campaign ends</li>
               </ul>
               <div className="tier-action">
                 <a href="#book-call">Book a 15-Minute Call</a>
@@ -459,112 +510,82 @@ footer{border-top:1px solid var(--line);background:#fff;padding:2rem clamp(1rem,
             <div>
               <p className="guarantee-label">Our Promise</p>
               <p className="guarantee-text">
-                Live within 7 days of your completed intake form, and your
-                first monthly report within 30 days of launch. If we're late
-                because of us, we keep working free until it's live.
+                Most systems live within 7 days of your completed intake
+                (ad campaigns within 14 days), and your first monthly report
+                lands within 30 days of launch. If we're late because of us,
+                we keep working free until it's live.
               </p>
             </div>
           </div>
 
           <p className="retainer-label" style={{ marginTop: "2.5rem" }}>
-            What the $497/Month Runs
+            One Partner — Everything Run For You
           </p>
           <p className="retainer-intro">
-            The monthly fee isn't hosting rent. It's us running the system
-            every month — so it keeps booking jobs while you run yours.
+            You don't get logins, homework, or freelancers to babysit. Every
+            system is monitored, updated, and reported on by Excelsus — you
+            get one point of contact and one plain monthly report.
           </p>
           <div className="retainer-grid">
             <div className="retainer-card featured">
-              <div className="retainer-price">
-                $497
-                <span style={{ fontSize: "0.9rem", fontWeight: 400 }}>/mo</span>
-              </div>
-              <p className="retainer-name">Run For You — Included</p>
+              <p className="retainer-name">Every Month, For Every System</p>
               <ul className="retainer-items">
-                <li>
-                  <span>✦</span> Hosting and the AI chat, kept live 24/7
-                </li>
-                <li>
-                  <span>✦</span> Instant lead alerts and follow-up emails,
-                  running
-                </li>
-                <li>
-                  <span>✦</span> Review requests after every job
-                </li>
-                <li>
-                  <span>✦</span> A 1-page monthly report: chats, leads,
-                  bookings
-                </li>
-                <li>
-                  <span>✦</span> Small updates — words, prices, services,
-                  hours
-                </li>
+                <li><span>✦</span> One point of contact — Miguel, not a ticket queue</li>
+                <li><span>✦</span> One monthly report: calls, chats, leads, bookings, cost per lead</li>
+                <li><span>✦</span> Systems monitored and kept live 24/7</li>
+                <li><span>✦</span> Small updates included — prices, hours, services</li>
+                <li><span>✦</span> Add a second system any time — most clients do once the first one pays</li>
               </ul>
             </div>
           </div>
           <p className="retainer-intro">
-            Not included, and not sold here: advertising, text-message (SMS)
-            systems, a CRM, social media posts, logo design. This page sells
-            one system. If it's not in the list above, it isn't part of the
-            offer.
+            Not sold here: hourly work, logos and branding, standalone social
+            posting, SEO packages. If it's not one of the four systems above,
+            ask on the call — we'd rather tell you straight than sell you
+            wrong.
           </p>
 
-          <p className="compare-title">Why Not a Regular Website?</p>
+          <p className="compare-title">Why Not the Usual Way?</p>
+
           <div className="compare-wrap">
             <table className="compare-table">
               <thead>
                 <tr>
                   <th>What Matters</th>
                   <th>Typical Website</th>
-                  <th>Excelsus Booking System</th>
+                  <th>Excelsus</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>After-hours visitors</td>
-                  <td>Nothing happens — they leave and book a competitor</td>
-                  <td className="new-way">
-                    AI chat answers and captures the lead, 24/7
-                  </td>
+                  <td>Missed calls</td>
+                  <td>A receptionist: $3,000+/month, 9-to-5, sick days and turnover</td>
+                  <td className="new-way">AI receptionist answers 24/7 for $397/month</td>
                 </tr>
                 <tr>
                   <td>Lead follow-up</td>
-                  <td>You call back when you notice — if you notice</td>
-                  <td className="new-way">
-                    Instant alert to you + instant reply to the customer, in
-                    seconds
-                  </td>
+                  <td>Whoever notices first — hours or days later</td>
+                  <td className="new-way">Instant alert to you, instant reply to the customer</td>
                 </tr>
                 <tr>
-                  <td>Online booking</td>
-                  <td>A phone number, business hours only</td>
-                  <td className="new-way">Booking on every page, any hour</td>
+                  <td>New customers</td>
+                  <td>Hope, referrals, and word of mouth</td>
+                  <td className="new-way">Managed Google + Meta ads with cost-per-lead reporting</td>
                 </tr>
                 <tr>
                   <td>Past customers</td>
-                  <td>The list sits in a drawer, unused</td>
-                  <td className="new-way">
-                    Reactivation campaign emailed in Week 1
-                  </td>
+                  <td>A list sitting in a drawer, going cold</td>
+                  <td className="new-way">A campaign that wakes them up and books them again</td>
                 </tr>
                 <tr>
-                  <td>Reviews</td>
-                  <td>You hope happy customers remember</td>
-                  <td className="new-way">
-                    Automatic review request after every job
-                  </td>
+                  <td>Proof it works</td>
+                  <td>Gut feeling</td>
+                  <td className="new-way">One monthly report — plain numbers</td>
                 </tr>
                 <tr>
-                  <td>Monthly proof</td>
-                  <td>None — you guess what the site did</td>
-                  <td className="new-way">
-                    1-page report: chats, leads, bookings
-                  </td>
-                </tr>
-                <tr>
-                  <td>Built for</td>
-                  <td>Any business, which means no business</td>
-                  <td className="new-way">Pest control companies only</td>
+                  <td>Who runs it</td>
+                  <td>You, on top of everything else</td>
+                  <td className="new-way">Excelsus — built, managed, reported</td>
                 </tr>
               </tbody>
             </table>
@@ -596,7 +617,7 @@ footer{border-top:1px solid var(--line);background:#fff;padding:2rem clamp(1rem,
           <div className="section-head" style={{ textAlign: "left" }}>
             <span className="section-eyebrow">How It Works</span>
             <h2 className="section-title">
-              From Demo Call to Booked Jobs in 7 Days.
+              From First Call to Working System in Days.
             </h2>
           </div>
           <div className="process-steps">
@@ -605,31 +626,31 @@ footer{border-top:1px solid var(--line);background:#fff;padding:2rem clamp(1rem,
                 num: "01",
                 label: "Demo Call",
                 time: "Day 0",
-                desc: "15 minutes. You see a live demo and exactly what the system does. If it's not a fit, I'll tell you.",
+                desc: "15 minutes. We find the leak that's costing you the most customers. If we can't fix it, I'll tell you straight.",
               },
               {
                 num: "02",
                 label: "Say Yes",
                 time: "Day 0",
-                desc: "$997 setup, paid online. No payment, no build — that keeps both of us serious.",
+                desc: "The setup fee for your system, paid online. No payment, no start — that keeps both of us serious.",
               },
               {
                 num: "03",
                 label: "Intake",
                 time: "Day 1",
-                desc: "A 15-minute form: services, prices, hours, areas. You approve one page of facts — that's all the AI chat is allowed to say.",
+                desc: "A 15-minute form: services, prices, hours. You approve one page of facts — that's all your AI is ever allowed to say.",
               },
               {
                 num: "04",
-                label: "Build & Test",
+                label: "Build & Launch",
                 time: "Days 2–6",
-                desc: "I build the system, then we test a real lead together: the chat answers, the emails fire, the booking lands.",
+                desc: "Our team builds it, then we test it live with you watching — a real call, a real lead, end to end. Ad campaigns launch within 14 days.",
               },
               {
                 num: "05",
-                label: "Launch + Campaign",
-                time: "Day 7",
-                desc: "Your site goes live on your domain — and your past-customer campaign goes out in Week 1.",
+                label: "Report & Grow",
+                time: "Day 30",
+                desc: "Your first monthly report lands: exactly what your systems produced, in plain numbers. Most clients add a second system here.",
               },
             ].map((step) => (
               <div className="process-step" key={step.num}>
@@ -644,20 +665,24 @@ footer{border-top:1px solid var(--line);background:#fff;padding:2rem clamp(1rem,
           <p className="compare-title">Who This Is For</p>
           <div className="audience-grid">
             <div className="audience-card">
-              <p>Established Pest Companies</p>
-              <p>50+ Google reviews and routes you want fuller</p>
+              <p>Home Services</p>
+              <p>Pest, HVAC, plumbing, roofing — your phone is your storefront</p>
             </div>
             <div className="audience-card">
-              <p>Owners Missing After-Hours Leads</p>
-              <p>Your phone can't answer at 9pm. Your website can.</p>
+              <p>Medical & Dental</p>
+              <p>A drowning front desk, and after-hours calls going nowhere</p>
             </div>
             <div className="audience-card">
-              <p>Companies With a Past-Customer List</p>
-              <p>Old customers are the cheapest new jobs you own</p>
+              <p>Legal & Professional</p>
+              <p>Every unanswered call is a client who signed with someone else</p>
             </div>
             <div className="audience-card">
-              <p>Tampa & Orlando</p>
-              <p>Local to Florida, bilingual — English & Spanish</p>
+              <p>Any Lead-Driven Business</p>
+              <p>Realtors, auto, salons, fitness — if a missed call costs you money, we fix it</p>
+            </div>
+            <div className="audience-card">
+              <p>Anywhere in the World</p>
+              <p>Remote-first, in English & Spanish — your customers never know or care where we sit</p>
             </div>
           </div>
         </div>
@@ -666,10 +691,11 @@ footer{border-top:1px solid var(--line);background:#fff;padding:2rem clamp(1rem,
       {/* MANIFESTO BANNER */}
       <div className="manifesto-banner">
         <blockquote>
-          "I'm not a web agency guessing what businesses need. I'm an AI
-          engineer. I build one system, for one industry, on the same stack I
-          run my own platforms on — and I'll show you it working before you
-          pay me a dollar."
+          "I'm not a freelancer guessing what might work, and this isn't a
+          template shop. I'm an AI engineer running a systems firm: we find
+          the leak that's costing you customers, plug it with a system that
+          runs 24/7, and report exactly what it produced. You run your
+          business. The systems run the rest."
         </blockquote>
         <cite>— Miguel Esteves, Founder, Excelsus Agency</cite>
       </div>
@@ -682,8 +708,8 @@ footer{border-top:1px solid var(--line);background:#fff;padding:2rem clamp(1rem,
             <h2 className="section-title">Built by an Engineer. Not a Template.</h2>
             <p className="section-sub" style={{ marginLeft: "0" }}>
               I don't resell page builders. I build and run real platforms —
-              and your booking system gets the same engineering, the same
-              stack, and the same accountability.
+              and every system we run for you gets the same engineering, the
+              same standards, and the same accountability.
             </p>
           </div>
 
@@ -731,8 +757,8 @@ footer{border-top:1px solid var(--line);background:#fff;padding:2rem clamp(1rem,
                 <p className="desc">
                   Full real estate listing site with lead capture and property
                   inquiry forms for a local business in Orlando. Delivered in
-                  under a week. Same engineering, applied to a local business
-                  that lives on leads.
+                  under a week. Same engineering, applied to a business that
+                  lives on leads.
                 </p>
                 <div className="portfolio-stack">
                   <span className="stack-pill">Next.js</span>
@@ -807,23 +833,23 @@ footer{border-top:1px solid var(--line);background:#fff;padding:2rem clamp(1rem,
           <h2 className="section-title contact-title">
             Let's Talk About
             <br />
-            <span>Your After-Hours Leads.</span>
+            <span>Your Biggest Leak.</span>
           </h2>
           <p className="contact-copy">
-            15 minutes. We open your current site next to a live demo. You see
-            exactly what happens today when a customer finds you at night —
-            and what changes with the system. The price is already on this
-            page; there are no surprises on the call.
+            15 minutes. We look at where customers are slipping away — the
+            ringing phone, the slow follow-up, the sleeping list — and which
+            system plugs it first. Every price is already on this page;
+            there are no surprises on the call.
           </p>
           <div className="contact-btn-row">
             <a
-              href="mailto:alejandriosity@gmail.com?subject=Demo Call — Excelsus Agency&body=Hi Miguel,%0A%0AI run a pest control company and I'd like to book a 15-minute demo call.%0A%0A[Company name / city / current website]"
+              href="mailto:alejandriosity@gmail.com?subject=Call — Excelsus Agency&body=Hi Miguel,%0A%0AI run a business and I'd like to book a 15-minute call.%0A%0A[Business name / what you sell / where you lose customers]"
               className="btn-primary"
             >
-              Book a Demo Call
+              Book a 15-Minute Call
             </a>
             <a href="#pricing" className="btn-ghost">
-              Back to the Offer
+              Back to Services
             </a>
           </div>
 
@@ -874,7 +900,7 @@ footer{border-top:1px solid var(--line);background:#fff;padding:2rem clamp(1rem,
             </div>
             <div className="contact-info-col">
               <p className="lbl">Service Area</p>
-              <span className="val">Tampa · Orlando, FL</span>
+              <span className="val">Worldwide · English & Spanish</span>
             </div>
           </div>
         </div>
@@ -885,10 +911,10 @@ footer{border-top:1px solid var(--line);background:#fff;padding:2rem clamp(1rem,
         <div className="footer-inner">
           <div>
             <div className="footer-brand">EXCELSUS AGENCY</div>
-            <p className="footer-tag">Booking Systems for Pest Control Companies</p>
+            <p className="footer-tag">Growth Systems for Businesses That Live on Leads</p>
           </div>
           <div className="footer-links">
-            <a href="#pricing">The System</a>
+            <a href="#pricing">Services</a>
             <a href="#portfolio">Proof</a>
             <a
               href="https://excelsus.live"
@@ -929,7 +955,7 @@ footer{border-top:1px solid var(--line);background:#fff;padding:2rem clamp(1rem,
         >
           <div className="chat-header">
             <strong>Excelsus AI Assistant</strong>
-            <span>The system · Pricing · What's included</span>
+            <span>Systems · Pricing · What's included</span>
           </div>
           <div
             className="chat-messages"
