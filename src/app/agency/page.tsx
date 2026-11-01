@@ -12,7 +12,7 @@ export default function AgencyPage() {
   const [chatMessages, setChatMessages] = useState<ChatMsg[]>([
     {
       role: "bot",
-      text: "Hey — I'm Miguel's website assistant. Ask me about pricing, timelines, or what's included. What do you need?",
+      text: "Hey — I'm the Excelsus AI assistant. Ask me about the booking system, the price, or what's included. What do you need?",
     },
   ]);
   const chatMessagesRef = useRef<HTMLDivElement>(null);
@@ -273,8 +273,8 @@ footer{border-top:1px solid rgba(201,168,76,0.08);padding:1.5rem clamp(1rem,4vw,
             EXCELSUS AGENCY
           </a>
           <div className="nav-links">
-            <a href="#pricing">Pricing</a>
-            <a href="#portfolio">Portfolio</a>
+            <a href="#pricing">The System</a>
+            <a href="#portfolio">Proof</a>
             <a href="#process">Process</a>
             <a href="#book-call" className="nav-cta">
               Book a Call
@@ -289,38 +289,39 @@ footer{border-top:1px solid rgba(201,168,76,0.08);padding:1.5rem clamp(1rem,4vw,
           <div className="hero-glow"></div>
           <div className="hero-line"></div>
         </div>
-        <p className="hero-eyebrow animate-rise">Professional Web Services</p>
+        <p className="hero-eyebrow animate-rise">Booking Systems for Pest Control Companies · Tampa & Orlando</p>
         <div className="hero-divider"></div>
         <h1
           className="animate-rise"
           style={{ animationDelay: "0.15s", opacity: "0" }}
         >
-          Your Business Deserves
+          Your Website Should
           <br />
-          <span className="gold-shimmer">a Website That Works.</span>
+          <span className="gold-shimmer">Book Jobs While You Sleep.</span>
         </h1>
         <p
           className="hero-sub animate-rise"
           style={{ animationDelay: "0.3s", opacity: "0" }}
         >
-          Professional, fast-loading websites built to convert visitors into
-          clients. Live in 5–7 days, done for you.
+          For pest control companies: a website with a 24/7 AI chat, instant
+          lead follow-up, online booking, and a campaign that brings your past
+          customers back. Live in 7 days.
         </p>
         <p
           className="hero-tagline animate-rise"
           style={{ animationDelay: "0.4s", opacity: "0" }}
         >
-          Booking · Lead Capture · SEO · Security · Support
+          AI Chat · Instant Follow-Up · Online Booking · Reactivation
         </p>
         <div
           className="hero-btns animate-rise"
           style={{ animationDelay: "0.5s", opacity: "0" }}
         >
           <a href="#book-call" className="btn-primary">
-            Book a Discovery Call
+            Book a 15-Minute Call
           </a>
           <a href="#pricing" className="btn-ghost">
-            See the Packages
+            See What You Get
           </a>
         </div>
       </section>
@@ -329,20 +330,20 @@ footer{border-top:1px solid rgba(201,168,76,0.08);padding:1.5rem clamp(1rem,4vw,
       <div className="proof-strip">
         <div className="proof-grid">
           <div>
-            <div className="proof-stat">5–7</div>
+            <div className="proof-stat">7</div>
             <div className="proof-label">Days to Launch</div>
           </div>
           <div>
-            <div className="proof-stat">$397</div>
-            <div className="proof-label">Starting Price</div>
+            <div className="proof-stat">$997</div>
+            <div className="proof-label">One-Time Setup</div>
           </div>
           <div>
-            <div className="proof-stat">$39</div>
-            <div className="proof-label">Per Month to Keep It Live</div>
+            <div className="proof-stat">$497</div>
+            <div className="proof-label">Per Month — Run For You</div>
           </div>
           <div>
-            <div className="proof-stat">100%</div>
-            <div className="proof-label">Satisfaction Guaranteed</div>
+            <div className="proof-stat">24/7</div>
+            <div className="proof-label">AI Chat Answering Customers</div>
           </div>
         </div>
       </div>
@@ -351,122 +352,89 @@ footer{border-top:1px solid rgba(201,168,76,0.08);padding:1.5rem clamp(1rem,4vw,
       <section id="pricing">
         <div className="section-inner">
           <div className="section-head" style={{ textAlign: "left" }}>
-            <span className="section-eyebrow">What I Build</span>
+            <span className="section-eyebrow">What You Get</span>
             <h2 className="section-title">
-              A Website That Actually
+              One System.
               <br />
-              Brings In Business
+              Built to Book Jobs.
             </h2>
             <p className="section-sub" style={{ marginLeft: "0" }}>
-              Built on the same stack I use for my own platforms — not a
-              template, not outsourced code. No nickel-and-diming: every package
-              comes fully equipped.
+              Not a brochure website. A booking system, built only for pest
+              control companies, on the same stack I run my own platforms on.
+              One offer, one price — everything below is included.
             </p>
           </div>
 
           <p className="service-copy">
-            A done-for-you website built on Next.js / Supabase / Stripe / Vercel
-            — the exact stack that powers my own platforms. Delivered in 5–7
-            days instead of the 4–8 weeks a typical agency takes.
+            Most pest control websites are brochures. A homeowner finds you at
+            9pm, can't book, can't ask a question — so they book whoever
+            answers first. This system is the fix: it answers, follows up, and
+            books, day and night, whether you're in the office or not.
           </p>
           <p className="service-copy">
-            Every build includes a conversion-focused design, booking / lead
-            capture, on-page SEO, and security hardening baked in as standard —
-            not sold separately.
+            Live in 7 days from your completed intake form. Built on Next.js /
+            Vercel / Cloudflare — engineered and security-hardened, not a
+            rented template.
           </p>
           <div className="advantage">
             <p>Why It's Different</p>
             <p>
-              I built my own platforms (Excelsus, HackLingo, a realtor's listing
-              site) on this exact stack. I'm not a freelancer guessing what
-              works — I'm a builder who eats my own cooking. Security hardened
-              by default because of my cybersecurity background — most website
-              sellers have never heard of a CSP header.
+              I'm an AI engineer, not a template reseller. I built and run my
+              own platforms (Excelsus, HackLingo) and client sites on this
+              exact stack — so your system is engineered, fast, and hardened by
+              default, and the person who built it is the person you talk to
+              when something needs changing.
             </p>
           </div>
 
           <div className="tier-grid">
-            <div className="tier-card">
-              <p className="tier-name">Simple</p>
-              <p className="tier-sub">Get online, fast</p>
-              <div className="tier-price-row">
-                <span className="tier-dollar">$</span>
-                <span className="tier-price">397</span>
-              </div>
-              <p className="tier-note">One-time · 5-day delivery</p>
-              <ul className="tier-items">
-                <li>
-                  <span>✦</span> Single-page professional website
-                </li>
-                <li>
-                  <span>✦</span> Services / offerings section
-                </li>
-                <li>
-                  <span>✦</span> Booking or contact form
-                </li>
-                <li>
-                  <span>✦</span> Google Calendar / Cal.com embed
-                </li>
-                <li>
-                  <span>✦</span> Contact info, location, Google Maps
-                </li>
-                <li>
-                  <span>✦</span> On-page SEO + AEO setup
-                </li>
-                <li>
-                  <span>✦</span> Security hardening (CSP, HTTPS)
-                </li>
-                <li>
-                  <span>✦</span> Mobile-responsive, fast-loading
-                </li>
-                <li>
-                  <span>✦</span> 30 days post-launch support
-                </li>
-              </ul>
-              <div className="tier-action">
-                <a href="#book-call">Get Started</a>
-              </div>
-            </div>
             <div className="tier-card featured">
-              <span className="tier-badge">Most Popular</span>
-              <p className="tier-name">Multi-Page</p>
-              <p className="tier-sub">The full professional presence</p>
+              <span className="tier-badge">Founding Clients — Tampa & Orlando</span>
+              <p className="tier-name">The Booking System</p>
+              <p className="tier-sub">Everything included. One price.</p>
               <div className="tier-price-row">
                 <span className="tier-dollar">$</span>
-                <span className="tier-price">697</span>
+                <span className="tier-price">997</span>
+                <span className="tier-period">setup</span>
               </div>
-              <p className="tier-note">One-time · 7-day delivery</p>
+              <p className="tier-note">
+                One-time setup · then $497/month for us to run it · 6-month
+                minimum, then month-to-month
+              </p>
               <ul className="tier-items">
                 <li>
-                  <span>✦</span> Everything in Simple
+                  <span>✦</span> A fast new website — home, general pest,
+                  termite, rodent, and booking pages
                 </li>
                 <li>
-                  <span>✦</span> Multiple pages (Home, About, Services, Contact,
-                  Blog-ready)
+                  <span>✦</span> AI chat on every page, 24/7 — answers
+                  questions and captures name, phone, and problem
                 </li>
                 <li>
-                  <span>✦</span> Advanced booking / reservation system
+                  <span>✦</span> Instant emails — you get an alert the second a
+                  lead comes in, the customer gets an instant reply
                 </li>
                 <li>
-                  <span>✦</span> Database integration (Supabase) for forms and
-                  leads
+                  <span>✦</span> Follow-up emails to leads who didn't book — 4
+                  emails over 7 days
                 </li>
                 <li>
-                  <span>✦</span> Email notification on every new lead
+                  <span>✦</span> Online booking on every page
                 </li>
                 <li>
-                  <span>✦</span> Third-party integrations (Stripe, OpenTable,
-                  etc.)
+                  <span>✦</span> Automatic review-request email after each job
                 </li>
                 <li>
-                  <span>✦</span> Blog or portfolio section
+                  <span>✦</span> One email campaign to your past customers in
+                  Week 1
                 </li>
                 <li>
-                  <span>✦</span> Priority support
+                  <span>✦</span> A 1-page report every month: chats, leads, and
+                  bookings the system produced
                 </li>
               </ul>
               <div className="tier-action">
-                <a href="#book-call">Get Started</a>
+                <a href="#book-call">Book a 15-Minute Call</a>
               </div>
             </div>
           </div>
@@ -474,124 +442,114 @@ footer{border-top:1px solid rgba(201,168,76,0.08);padding:1.5rem clamp(1rem,4vw,
           <div className="guarantee-box">
             <span className="guarantee-icon">⚔</span>
             <div>
-              <p className="guarantee-label">Guarantee</p>
+              <p className="guarantee-label">Our Promise</p>
               <p className="guarantee-text">
-                Your site goes live within the promised timeframe — or I keep
-                working for free until it does.
+                Live within 7 days of your completed intake form, and your
+                first monthly report within 30 days of launch. If we're late
+                because of us, we keep working free until it's live.
               </p>
             </div>
           </div>
 
           <p className="retainer-label" style={{ marginTop: "2.5rem" }}>
-            Monthly Plans — Optional
+            What the $497/Month Runs
           </p>
           <p className="retainer-intro">
-            A website without maintenance is a liability. Hosting expires,
-            content gets stale, and slow sites lose rankings. These plans keep
-            everything running.
+            The monthly fee isn't hosting rent. It's us running the system
+            every month — so it keeps booking jobs while you run yours.
           </p>
           <div className="retainer-grid">
-            <div className="retainer-card">
-              <div className="retainer-price">
-                $39
-                <span style={{ fontSize: "0.9rem", fontWeight: 400 }}>/mo</span>
-              </div>
-              <p className="retainer-name">Maintenance — "Keep It Live"</p>
-              <ul className="retainer-items">
-                <li>
-                  <span>✦</span> Hosting covered (no separate bill)
-                </li>
-                <li>
-                  <span>✦</span> Content updates (menu items, hours, photos,
-                  text)
-                </li>
-                <li>
-                  <span>✦</span> Uptime monitoring
-                </li>
-                <li>
-                  <span>✦</span> Minor bug fixes
-                </li>
-              </ul>
-            </div>
             <div className="retainer-card featured">
               <div className="retainer-price">
-                $79
+                $497
                 <span style={{ fontSize: "0.9rem", fontWeight: 400 }}>/mo</span>
               </div>
-              <p className="retainer-name">Growth — "Keep It Growing"</p>
+              <p className="retainer-name">Run For You — Included</p>
               <ul className="retainer-items">
                 <li>
-                  <span>✦</span> Everything in Maintenance
+                  <span>✦</span> Hosting and the AI chat, kept live 24/7
                 </li>
                 <li>
-                  <span>✦</span> One new addition per month (section, form,
-                  design tweak)
+                  <span>✦</span> Instant lead alerts and follow-up emails,
+                  running
                 </li>
                 <li>
-                  <span>✦</span> Basic monthly analytics report
+                  <span>✦</span> Review requests after every job
                 </li>
                 <li>
-                  <span>✦</span> Monthly on-page SEO check
+                  <span>✦</span> A 1-page monthly report: chats, leads,
+                  bookings
+                </li>
+                <li>
+                  <span>✦</span> Small updates — words, prices, services,
+                  hours
                 </li>
               </ul>
             </div>
           </div>
+          <p className="retainer-intro">
+            Not included, and not sold here: advertising, text-message (SMS)
+            systems, a CRM, social media posts, logo design. This page sells
+            one system. If it's not in the list above, it isn't part of the
+            offer.
+          </p>
 
-          <p className="compare-title">Why Not Just Use Wix?</p>
+          <p className="compare-title">Why Not a Regular Website?</p>
           <div className="compare-wrap">
             <table className="compare-table">
               <thead>
                 <tr>
-                  <th>Feature</th>
-                  <th>Wix / Squarespace</th>
-                  <th>Excelsus Agency</th>
+                  <th>What Matters</th>
+                  <th>Typical Website</th>
+                  <th>Excelsus Booking System</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Delivery time</td>
-                  <td>You do it yourself — weeks if you're lucky</td>
-                  <td className="new-way">5–7 days, done for you</td>
-                </tr>
-                <tr>
-                  <td>Monthly cost</td>
-                  <td>$20–$50/mo forever, you own nothing</td>
+                  <td>After-hours visitors</td>
+                  <td>Nothing happens — they leave and book a competitor</td>
                   <td className="new-way">
-                    $39/mo optional — you own the code
+                    AI chat answers and captures the lead, 24/7
                   </td>
                 </tr>
                 <tr>
-                  <td>Performance</td>
-                  <td>Template bloat, slow by default</td>
+                  <td>Lead follow-up</td>
+                  <td>You call back when you notice — if you notice</td>
                   <td className="new-way">
-                    Optimized Next.js — fast by design
+                    Instant alert to you + instant reply to the customer, in
+                    seconds
                   </td>
                 </tr>
                 <tr>
-                  <td>SEO setup</td>
-                  <td>Basic meta fields, no schema</td>
-                  <td className="new-way">Full on-page SEO + schema + AEO</td>
+                  <td>Online booking</td>
+                  <td>A phone number, business hours only</td>
+                  <td className="new-way">Booking on every page, any hour</td>
                 </tr>
                 <tr>
-                  <td>Security</td>
-                  <td>Platform-level only, frequent breaches</td>
+                  <td>Past customers</td>
+                  <td>The list sits in a drawer, unused</td>
                   <td className="new-way">
-                    CSP headers, auth hardening, input validation
+                    Reactivation campaign emailed in Week 1
                   </td>
                 </tr>
                 <tr>
-                  <td>Lead database</td>
-                  <td>None — forms email you and disappear</td>
+                  <td>Reviews</td>
+                  <td>You hope happy customers remember</td>
                   <td className="new-way">
-                    Supabase database, every lead captured
+                    Automatic review request after every job
                   </td>
                 </tr>
                 <tr>
-                  <td>You own the site</td>
-                  <td>No — cancel the subscription, site dies</td>
+                  <td>Monthly proof</td>
+                  <td>None — you guess what the site did</td>
                   <td className="new-way">
-                    Yes — your code, your domain, yours
+                    1-page report: chats, leads, bookings
                   </td>
+                </tr>
+                <tr>
+                  <td>Built for</td>
+                  <td>Any business, which means no business</td>
+                  <td className="new-way">Pest control companies only</td>
                 </tr>
               </tbody>
             </table>
@@ -623,40 +581,40 @@ footer{border-top:1px solid rgba(201,168,76,0.08);padding:1.5rem clamp(1rem,4vw,
           <div className="section-head" style={{ textAlign: "left" }}>
             <span className="section-eyebrow">How It Works</span>
             <h2 className="section-title">
-              From Call to Live Site in One Week.
+              From Demo Call to Booked Jobs in 7 Days.
             </h2>
           </div>
           <div className="process-steps">
             {[
               {
                 num: "01",
-                label: "Discovery Call",
+                label: "Demo Call",
                 time: "Day 0",
-                desc: "15 minutes. You tell me what you do, who you serve, and what you want the site to accomplish. That's it.",
+                desc: "15 minutes. You see a live demo and exactly what the system does. If it's not a fit, I'll tell you.",
               },
               {
                 num: "02",
-                label: "Questionnaire",
-                time: "Day 1",
-                desc: "Short brand questionnaire — colors, tone, examples you like. No homework, no lengthy briefs.",
+                label: "Say Yes",
+                time: "Day 0",
+                desc: "$997 setup, paid online. No payment, no build — that keeps both of us serious.",
               },
               {
                 num: "03",
-                label: "Build",
-                time: "Days 1–5",
-                desc: "I build the site on your chosen package. You don't need to do anything during this phase.",
+                label: "Intake",
+                time: "Day 1",
+                desc: "A 15-minute form: services, prices, hours, areas. You approve one page of facts — that's all the AI chat is allowed to say.",
               },
               {
                 num: "04",
-                label: "Review & Revise",
-                time: "Day 5–6",
-                desc: "You review the live preview. One round of revisions included.",
+                label: "Build & Test",
+                time: "Days 2–6",
+                desc: "I build the system, then we test a real lead together: the chat answers, the emails fire, the booking lands.",
               },
               {
                 num: "05",
-                label: "Launch",
-                time: "Day 6–7",
-                desc: "Your domain connected, site live, everything tested. You get credentials and a walkthrough.",
+                label: "Launch + Campaign",
+                time: "Day 7",
+                desc: "Your site goes live on your domain — and your past-customer campaign goes out in Week 1.",
               },
             ].map((step) => (
               <div className="process-step" key={step.num}>
@@ -671,28 +629,20 @@ footer{border-top:1px solid rgba(201,168,76,0.08);padding:1.5rem clamp(1rem,4vw,
           <p className="compare-title">Who This Is For</p>
           <div className="audience-grid">
             <div className="audience-card">
-              <p>Coaches & Consultants</p>
-              <p>Look credible before your calendar fills up</p>
+              <p>Established Pest Companies</p>
+              <p>50+ Google reviews and routes you want fuller</p>
             </div>
             <div className="audience-card">
-              <p>Restaurants & Cafes</p>
-              <p>Menu, hours, reservations, location — all in one place</p>
+              <p>Owners Missing After-Hours Leads</p>
+              <p>Your phone can't answer at 9pm. Your website can.</p>
             </div>
             <div className="audience-card">
-              <p>Local Service Businesses</p>
-              <p>Plumbers, contractors, salons — every call is money</p>
+              <p>Companies With a Past-Customer List</p>
+              <p>Old customers are the cheapest new jobs you own</p>
             </div>
             <div className="audience-card">
-              <p>Freelancers & Agencies</p>
-              <p>Your portfolio is the pitch</p>
-            </div>
-            <div className="audience-card">
-              <p>Real Estate Agents</p>
-              <p>Listings, contact, booking, professional first impression</p>
-            </div>
-            <div className="audience-card">
-              <p>Medical & Dental Practices</p>
-              <p>Patient trust starts online, booking included</p>
+              <p>Tampa & Orlando</p>
+              <p>Local to Florida, bilingual — English & Spanish</p>
             </div>
           </div>
         </div>
@@ -701,12 +651,12 @@ footer{border-top:1px solid rgba(201,168,76,0.08);padding:1.5rem clamp(1rem,4vw,
       {/* MANIFESTO BANNER */}
       <div className="manifesto-banner">
         <blockquote>
-          "I'm not a web agency guessing what founders need. I left my job to
-          build my own platforms — on the exact stack I'd build yours on. Your
-          site is fast. And it's hardened. Most people selling websites right
-          now can't say that."
+          "I'm not a web agency guessing what businesses need. I'm an AI
+          engineer. I build one system, for one industry, on the same stack I
+          run my own platforms on — and I'll show you it working before you
+          pay me a dollar."
         </blockquote>
-        <cite>— Miguel Esteves, Excelsus Agency</cite>
+        <cite>— Miguel Esteves, Founder, Excelsus Agency</cite>
       </div>
 
       {/* PORTFOLIO */}
@@ -714,11 +664,11 @@ footer{border-top:1px solid rgba(201,168,76,0.08);padding:1.5rem clamp(1rem,4vw,
         <div className="section-inner">
           <div className="section-head" style={{ textAlign: "left" }}>
             <span className="section-eyebrow">Proof of Work</span>
-            <h2 className="section-title">Built. Shipped. Running.</h2>
+            <h2 className="section-title">Built by an Engineer. Not a Template.</h2>
             <p className="section-sub" style={{ marginLeft: "0" }}>
-              Every client build uses the same stack I built my own platforms
-              on. No outsourcing. No templates. My code, my architecture, my
-              accountability.
+              I don't resell page builders. I build and run real platforms —
+              and your booking system gets the same engineering, the same
+              stack, and the same accountability.
             </p>
           </div>
 
@@ -764,9 +714,10 @@ footer{border-top:1px solid rgba(201,168,76,0.08);padding:1.5rem clamp(1rem,4vw,
                 <p className="portfolio-tag">Client Work</p>
                 <h3>Orlando Realtor — Roxanne Fernandez</h3>
                 <p className="desc">
-                  Full real estate listing site with lead capture, property
-                  inquiry forms, and local SEO setup. Delivered in under a week.
-                  Live and converting.
+                  Full real estate listing site with lead capture and property
+                  inquiry forms for a local business in Orlando. Delivered in
+                  under a week. Same engineering, applied to a local business
+                  that lives on leads.
                 </p>
                 <div className="portfolio-stack">
                   <span className="stack-pill">Next.js</span>
@@ -836,32 +787,28 @@ footer{border-top:1px solid rgba(201,168,76,0.08);padding:1.5rem clamp(1rem,4vw,
       <section id="book-call" className="contact-section">
         <div className="contact-inner">
           <span className="section-eyebrow">
-            Discovery Call · Ready to Build
+            Book a Call · 15 Minutes
           </span>
           <h2 className="section-title contact-title">
-            Let's Talk About Your Business
+            Let's Talk About
             <br />
-            <span>One Call. Live in 7 Days.</span>
+            <span>Your After-Hours Leads.</span>
           </h2>
           <p className="contact-copy">
-            15 minutes. No pitch deck. No pressure. You tell me what's broken or
-            slow — I tell you exactly what I'd build, when it would be done, and
-            what it costs. If it's not a fit, I'll tell you that too.
+            15 minutes. We open your current site next to a live demo. You see
+            exactly what happens today when a customer finds you at night —
+            and what changes with the system. The price is already on this
+            page; there are no surprises on the call.
           </p>
           <div className="contact-btn-row">
             <a
-              href="mailto:alejandriosity@gmail.com?subject=Discovery Call — Excelsus Agency&body=Hi Miguel,%0A%0AI'd like to book a discovery call. Here's a bit about my business:%0A%0A[Your business / what you need help with]"
+              href="mailto:alejandriosity@gmail.com?subject=Demo Call — Excelsus Agency&body=Hi Miguel,%0A%0AI run a pest control company and I'd like to book a 15-minute demo call.%0A%0A[Company name / city / current website]"
               className="btn-primary"
             >
-              Book a Discovery Call
+              Book a Demo Call
             </a>
-            <a
-              href="https://github.com/Variosity"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-ghost"
-            >
-              See the Code
+            <a href="#pricing" className="btn-ghost">
+              Back to the Offer
             </a>
           </div>
 
@@ -900,26 +847,19 @@ footer{border-top:1px solid rgba(201,168,76,0.08);padding:1.5rem clamp(1rem,4vw,
               </a>
             </div>
             <div className="contact-info-col">
-              <p className="lbl">GitHub</p>
+              <p className="lbl">LinkedIn</p>
               <a
                 className="val"
-                href="https://github.com/Variosity"
+                href="https://www.linkedin.com/in/miguel-esteves-129879314/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                github.com/Variosity
+                Miguel Esteves
               </a>
             </div>
             <div className="contact-info-col">
-              <p className="lbl">Portfolio</p>
-              <a
-                className="val"
-                href="https://alejandriosity.vercel.app"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                alejandriosity.vercel.app
-              </a>
+              <p className="lbl">Service Area</p>
+              <span className="val">Tampa · Orlando, FL</span>
             </div>
           </div>
         </div>
@@ -930,11 +870,11 @@ footer{border-top:1px solid rgba(201,168,76,0.08);padding:1.5rem clamp(1rem,4vw,
         <div className="footer-inner">
           <div>
             <div className="footer-brand">EXCELSUS AGENCY</div>
-            <p className="footer-tag">Build. Launch. Grow.</p>
+            <p className="footer-tag">Booking Systems for Pest Control Companies</p>
           </div>
           <div className="footer-links">
-            <a href="#pricing">Pricing</a>
-            <a href="#portfolio">Portfolio</a>
+            <a href="#pricing">The System</a>
+            <a href="#portfolio">Proof</a>
             <a
               href="https://excelsus.live"
               target="_blank"
@@ -973,8 +913,8 @@ footer{border-top:1px solid rgba(201,168,76,0.08);padding:1.5rem clamp(1rem,4vw,
           id="chatBubble"
         >
           <div className="chat-header">
-            <strong>Ask Me Anything</strong>
-            <span>Pricing · Timeline · What's included</span>
+            <strong>Excelsus AI Assistant</strong>
+            <span>The system · Pricing · What's included</span>
           </div>
           <div
             className="chat-messages"
@@ -1014,7 +954,7 @@ footer{border-top:1px solid rgba(201,168,76,0.08);padding:1.5rem clamp(1rem,4vw,
         <button
           className="chatbot-btn"
           onClick={() => setChatOpen((v) => !v)}
-          title="Chat with Miguel's assistant"
+          title="Chat with the Excelsus AI assistant"
         >
           {chatOpen ? "✕" : "⚔"}
         </button>
