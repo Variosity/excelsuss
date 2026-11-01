@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap");
+@import "tailwindcss";
+
+:root {
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-dim: #8b6914;
+    --stone: #0f0d0b;
+    --stone2: #1a1714;
+    --stone3: #211e1a;
+    --stone4: #2d2923;
+    --iron: #6b6357;
+    --parchment: #f5eed8;
+    --parchment-dim: #c8b98a;
+    --blood: #8b1a1a;
+    --blood-bright: #b22222;
+    --ember: #d4541a;
+    --white: #fafaf8;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background: var(--stone);
+    color: var(--parchment);
+    font-family: "Crimson Pro", Georgia, serif;
+    -webkit-font-smoothing: antialiased;
+}
+.font-cinzel {
+    font-family: "Cinzel", serif;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--stone2);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--gold-dim);
+    border-radius: 3px;
+}
+
+/* Prevent iOS input zoom — must be 16px minimum */
+input,
+select,
+textarea {
+    font-size: 16px !important;
+}
+
+/* Prevent horizontal overflow globally */
+html,
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Better touch targets */
+button {
+    min-height: 44px;
+}
+
+/* Prevent text size adjustment on orientation change */
+body {
+    -webkit-text-size-adjust: 100%;
+}
+
+@keyframes flicker {
+    0%,
+    100% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+    25% {
+        opacity: 0.85;
+        transform: scaleY(0.97);
+    }
+    50% {
+        opacity: 0.95;
+        transform: scaleY(1.02);
+    }
+    75% {
+        opacity: 0.88;
+        transform: scaleY(0.98);
+    }
+}
+@keyframes riseUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+@keyframes pulse-glow {
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(201, 168, 76, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(201, 168, 76, 0.25);
+    }
+}
+@keyframes ember-rise {
+    0% {
+        opacity: 0.8;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-120px) scale(0.3);
+    }
+}
+
+.animate-rise {
+    animation: riseUp 0.8s ease-out forwards;
+}
+.animate-fade {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+.animate-flicker {
+    animation: flicker 3s ease-in-out infinite;
+}
+.animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.gold-shimmer {
+    background: linear-gradient(
+        90deg,
+        var(--gold-dim),
+        var(--gold-light),
+        var(--gold),
+        var(--gold-dim)
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 4s linear infinite;
+}
+
+.noise::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
